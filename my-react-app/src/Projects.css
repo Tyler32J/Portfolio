@@ -1,0 +1,125 @@
+.projects-section {
+  padding: 4rem 1.5rem;
+  background-color: #18181b;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects-title {
+  font-size: 3rem;
+  font-weight: 300;
+  color: #fafafa;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.projects-subtitle {
+  color: #a1a1aa;
+  font-size: 1rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.projects-grid {
+  max-width: 1400px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.project-card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  height: 350px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  border: 1px solid transparent;
+  background-color: #27272a;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  border: 1px solid #0ea5e9;
+}
+
+.project-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  position: relative;
+  text-align: center;
+}
+
+.project-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.2));
+  z-index: 1;
+}
+
+.project-name {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #fafafa;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.project-description {
+  font-size: 0.95rem;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.view-project-btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: #0ea5e9;
+  text-decoration: none;
+  border-radius: 2rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  border: 2px solid #0ea5e9;
+  width: fit-content;
+}
+
+.view-project-btn:hover {
+  background-color: #0284c7;
+  color: #fff;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .projects-title {
+    font-size: 2rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card {
+    height: 300px;
+  }
+}
