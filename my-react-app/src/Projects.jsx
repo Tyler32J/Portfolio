@@ -45,6 +45,13 @@ const Projects = () => {
       description: "A simple Python terminal dice game where the player rolls a virtual die to get a random number between 1 and 6, with results displayed in the console. Players can roll repeatedly and try to beat their previous rolls.",
       image: "/Dice_Rolling_Simulator.png",
       link: "https://github.com/Kenady99/Dice-Game"
+    },
+    {
+      id: 6,
+      title: "Game Collection Manager",
+      description: "Game Collection Manager is a Java terminal application designed to help users manage their personal video game library. Users can add new games, view their collection, update information, and remove games they no longer own.",
+      image: "game_collection_manager.png",
+      link: "https://github.com/Tyler32J/Game-Collection-Manager"
     }
   ];
 
