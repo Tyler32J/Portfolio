@@ -10,21 +10,21 @@ const Projects = () => {
       // link: "http://127.0.0.1:8000/"
       link: " https://tyler32j.github.io/Sportsman-Journal-Project/"
     },
-    {
-      id: 2,
-      title: "TJ's Handyman Service",
-      description:"Still in Development",
-      // description: "Experienced handyman delivering efficient, affordable solutions for repairs, installations, and general maintenance.",
-      image: "/comingsoon.png",
-      link: ""
-    },
-    {
-      id: 3,
-      title: "Brad's Honey & Bee Removal",
-      description: "Still in Development",
-      image: "/comingsoon.png",
-      link: ""
-    },
+    // {
+    //   id: 2,
+    //   title: "TJ's Handyman Service",
+    //   description:"Still in Development",
+    //   // description: "Experienced handyman delivering efficient, affordable solutions for repairs, installations, and general maintenance.",
+    //   image: "/comingsoon.png",
+    //   link: ""
+    // },
+    // {
+    //   id: 3,
+    //   title: "Brad's Honey & Bee Removal",
+    //   description: "Still in Development",
+    //   image: "/comingsoon.png",
+    //   link: ""
+    // },
     {
       id: 4,
       title: "Betting on the Races!",
