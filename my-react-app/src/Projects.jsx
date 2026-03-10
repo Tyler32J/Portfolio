@@ -7,8 +7,7 @@ const Projects = () => {
       title: "Sportsman's Journal",
       description: "Sportsman's Journal is a personal field log designed for hunters and anglers who value accurate records and lasting memories. Log your hunts, record your catches, and build a personal outdoor journal. ( Try it! )",
       image: "/sportsman_journal.png",
-      // link: "http://127.0.0.1:8000/"
-      link: " https://tyler32j.github.io/Sportsman-Journal-Project/"
+      link: " https://web-production-e5e3.up.railway.app/"
     },
     // {
     //   id: 2,
