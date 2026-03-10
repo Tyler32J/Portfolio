@@ -10,21 +10,21 @@ const Projects = () => {
       // link: "http://127.0.0.1:8000/"
       link: " https://tyler32j.github.io/Sportsman-Journal-Project/"
     },
-    // {
-    //   id: 2,
-    //   title: "TJ's Handyman Service",
-    //   description:"Still in Development",
-    //   // description: "Experienced handyman delivering efficient, affordable solutions for repairs, installations, and general maintenance.",
-    //   image: "/comingsoon.png",
-    //   link: ""
-    // },
-    // {
-    //   id: 3,
-    //   title: "Brad's Honey & Bee Removal",
-    //   description: "Still in Development",
-    //   image: "/comingsoon.png",
-    //   link: ""
-    // },
+    {
+      id: 2,
+      title: "TJ's Handyman Service",
+      description:"Still in Development",
+      // description: "Experienced handyman delivering efficient, affordable solutions for repairs, installations, and general maintenance.",
+      image: "/comingsoon.png",
+      link: ""
+    },
+    {
+      id: 3,
+      title: "Brad's Honey & Bee Removal",
+      description: "Still in Development",
+      image: "/comingsoon.png",
+      link: ""
+    },
     {
       id: 4,
       title: "Betting on the Races!",
@@ -39,13 +39,13 @@ const Projects = () => {
       image: "/halo_background.png",
       link: "https://github.com/Tyler32J/GOAT"
     },
-    // {
-    //   id: 6,
-    //   title: "",
-    //   description: "",
-    //   image: "/comingsoon.png",
-    //   link: ""
-    // }
+    {
+      id: 6,
+      title: "Dice Game",
+      description: "A simple Python terminal dice game where the player rolls a virtual die to get a random number between 1 and 6, with results displayed in the console. Players can roll repeatedly and try to beat their previous rolls.",
+      image: "/Dice_Rolling_Simulator.png",
+      link: "https://github.com/Kenady99/Dice-Game"
+    }
   ];
 
   return (
