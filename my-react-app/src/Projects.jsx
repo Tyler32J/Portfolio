@@ -36,7 +36,7 @@ const Projects = () => {
       title: "The Goat",
       description: "Master Chief is more than a warrior; he is a symbol of hope and courage. In the face of impossible odds, he stands unbroken, fighting not for himself, but for the survival of humanity.",
       image: "/halo_background.png",
-      link: "https://github.com/Tyler32J/GOAT"
+      link: "https://goat-project-production.up.railway.app"
     },
     {
       id: 6,
