@@ -8,11 +8,36 @@ const Contact = () => {
     setSubmitted(false);
   };
 
-  const handleSubmit = (e) => {
+   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitted(true);
+    
+    const formData = new FormData(e.target);
+
+    const payload = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    try {
+      const res = await fetch("https://portfolio-production-e5f3.up.railway.app/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+
+      if (res.ok) {
+        setSubmitted(true);
+        e.target.reset();
+      } else {
+        alert("Failed to send message");
+      }
+    // eslint-disable-next-line no-unused-vars
+    } catch (err) {
+      alert("Failed to send message");
+    }
   };
-  
+
   if (submitted) {
     return (
       <section className="contact-section">
