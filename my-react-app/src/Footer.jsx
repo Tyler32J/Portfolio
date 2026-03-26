@@ -57,11 +57,11 @@ const Footer = () => {
           <ul className="footer-contact">
             <li>
               <span className="contact-icon">📧</span>
-              <span>tfarrell@basecampcodingacademy.org</span>
+              <span><a href="mailto:tfarrell@basecampcodingacademy.org">tfarrell@basecampcodingacademy.org</a></span>
             </li>
             <li>
               <span className="contact-icon">📞</span>
-              <span>+1 (228) 363-3068</span>
+              <span><a href="tel:+12283633068">+1 (228) 363-3068</a></span>
             </li>
             <li>
               <span className="contact-icon">📍</span>

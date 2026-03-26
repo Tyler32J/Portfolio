@@ -1,5 +1,6 @@
-# Ignore backend
-
-
-# Ignore all env files
+# Ignore env files
 .env*
+
+# Ignore dependencies and local caches
+node_modules/
+.vite/

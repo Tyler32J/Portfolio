@@ -7,7 +7,7 @@ const NavBar = () => {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <div className="navbar-logo">Portfolio.</div>
+        <div className="navbar-logo">Portfolio</div>
         
         <div className={`navbar-menu ${open ? 'open' : ''}`}>
           <a className="navbar-link" href="#home">Home</a>
