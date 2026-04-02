@@ -29,7 +29,7 @@ const Projects = () => {
       title: "Betting on the Races!",
       description: "Put your racing knowledge to the test by betting on your favorite drivers. Pick who you think will win and place your bet,",
       image: "/betting_on_the_races.png",
-      link: "https://github.com/jrsossaman/Betting-On-The-Races-React"
+      link: "betting-on-the-races-react-production.up.railway.app"
     },
     {
       id: 5,
