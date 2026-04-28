@@ -17,13 +17,13 @@ const Projects = () => {
     //   image: "/comingsoon.png",
     //   link: ""
     // },
-    // {
-    //   id: 3,
-    //   title: "Brad's Honey & Bee Removal",
-    //   description: "Still in Development",
-    //   image: "/comingsoon.png",
-    //   link: ""
-    // },
+    {
+      id: 3,
+      title: "Brad's Honey & Bee Removal",
+      description: "Professional bee removal and locally harvested honey business website.",
+      image: "/Brads_Bees.png",
+      link: "https://brads-bees-production.up.railway.app/"
+    },
     {
       id: 4,
       title: "Betting on the Races!",
