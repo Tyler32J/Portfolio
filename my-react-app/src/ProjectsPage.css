@@ -1,8 +1,4 @@
 .projects-section {
-  margin-top: 6rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
-  margin-bottom: 4rem;
   padding: 40px 0;
   background:transparent;
 }
@@ -44,7 +40,7 @@
   overflow: hidden;
   min-height: 420px;
   position: relative;
-  border: 1px solid #3f3f46; /* Add this line */
+  border: 1px solid #3f3f46; 
   transition: box-shadow 0.2s, border-color 0.2s;
 }
 

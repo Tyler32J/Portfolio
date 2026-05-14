@@ -1,4 +1,5 @@
 import './Skills.css';
+import SeeMoreButton from "./SeeMoreButton";
 
 const SkillCard = ({ imgSrc, label, desc, link }) => {
     const cardContent = (
@@ -44,17 +45,19 @@ const Skills = () => {
     { imgSrc: '/canva.svg', label: 'Canva', desc: 'Design Tool', link: "https://www.canva.com/features/" },
     { imgSrc: '/vscode.svg', label: 'Visual Studio Code', desc: 'IDEs/Code Editors', link: "https://code.visualstudio.com/docs" },
     { imgSrc: '/intellij.svg', label: 'IntelliJ', desc: 'IDEs/Code Editors', link: "https://www.jetbrains.com/idea/" },
-     { imgSrc: '/postman.svg', label: 'Postman', desc: 'API Testing Tool', link: "https://www.postman.com/" },
+    { imgSrc: '/postman.svg', label: 'Postman', desc: 'API Testing Tool', link: "https://www.postman.com/" },
   ];
 
   return (
     <section className="skills-section" id="skills">
       <div className="skills-container">
-        <h2 className="skills-title">Skills</h2>
-        <p className="skills-subtitle">
-          Essential Tools I've learned and used!
-        </p>
-
+      <div className="section-header">
+        <h2>Skills</h2>
+        <p>Essential Tools I've learned and used!</p>
+      </div>
+        <div className="see-more-container">
+          <SeeMoreButton href="/skills" />
+        </div>
         <div className="skills-grid">
           {skillItem.map(({ imgSrc, label, desc, link }, key) => (
             <SkillCard

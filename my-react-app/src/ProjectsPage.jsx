@@ -1,5 +1,10 @@
-import './Projects.css';
-import SeeMoreButton from "./SeeMoreButton";
+import React from "react";
+import NavBar from "./NavBar";
+import Footer from "./Footer";
+import BackButton from "./BackButton";
+import "./Projects.css";
+import Projects from './Projects'
+
 
 const projects = [
   {
@@ -52,40 +57,43 @@ const projects = [
   }
 ];
 
-const Projects = () => (
-  <section className="projects-section" id="projects">
-    <div className="section-header">
-      <h2>Projects</h2>
-      <p>Real-world projects I’ve built!</p>
-    </div>
-    <div className="see-more-container">
-      <SeeMoreButton href="/projects" />
-    </div>
-    <div className="projects-grid">
-      {projects.map((project) => (
-        <div key={project.id} className="project-card">
-          <div className="project-img-wrapper">
-            <img src={project.image} alt={project.title} className="project-img" />
-          </div>
-          <div className="project-content">
-            <h3 className="project-name">{project.title}</h3>
-            <p className="project-description">{project.description}</p>
-            <div className="project-footer">
-              <div className="project-tech">{project.tech}</div>
-              <a
-                href={project.link}
-                className="view-project-btn"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                View Project
-              </a>
+const ProjectsPage = () => (
+  <div>
+    <NavBar />
+    <BackButton to="/#projects" label="Back" />
+    <section className="projects-section" id="projects">
+      <div className="section-header">
+        <h2>Projects</h2>
+        <p>Real-world projects I’ve built!</p>
+      </div>
+      {/* See More button removed */}
+      <div className="projects-grid">
+        {projects.map((project) => (
+          <div key={project.id} className="project-card">
+            <div className="project-img-wrapper">
+              <img src={project.image} alt={project.title} className="project-img" />
+            </div>
+            <div className="project-content">
+              <h3 className="project-name">{project.title}</h3>
+              <p className="project-description">{project.description}</p>
+              <div className="project-footer">
+                <div className="project-tech">{project.tech}</div>
+                <a
+                  href={project.link}
+                  className="view-project-btn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  View Project
+                </a>
+              </div>
             </div>
           </div>
-        </div>
-      ))}
-    </div>
-  </section>
+        ))}
+      </div>
+    </section>
+    <Footer />
+  </div>
 );
 
-export default Projects;
+export default ProjectsPage;

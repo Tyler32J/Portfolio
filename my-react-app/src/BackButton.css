@@ -1,0 +1,61 @@
+/* Simple Back Button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: #0ea5e9;
+  text-decoration: none;
+  border-radius: 2rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s ease;
+  border: 2px solid #0ea5e9;
+  width: fit-content;
+}
+
+.back-btn:hover {
+  background-color: #0284c7;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.back-arrow-icon {
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.back-btn:hover .back-arrow-icon {
+  transform: translateX(-4px);
+}
+
+.back-btn-container {
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center ;
+  max-width: 10%;
+  margin-bottom: 1.5rem; 
+  margin-left: 7rem;
+  margin-right: 2rem;     
+  margin-top: 6rem;
+  top: 14%;
+}
+
+/* Responsive */
+@media (max-width: 2628px) {
+  .back-btn {
+    padding: 8px 16px;
+    font-size: 0.875rem;
+  }
+  .back-btn-container {
+    max-width: 100%;
+    /* margin: 1rem auto 0 auto; */
+    justify-content: flex-start;
+    top: 8rem;
+    
+  }
+}
