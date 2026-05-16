@@ -3,7 +3,6 @@ import NavBar from "./NavBar";
 import Footer from "./Footer";
 import BackButton from "./BackButton";
 import "./Projects.css";
-import Projects from './Projects'
 
 
 const projects = [
@@ -58,7 +57,7 @@ const projects = [
 ];
 
 const ProjectsPage = () => (
-  <div>
+  <>
     <NavBar />
     <BackButton to="/#projects" label="Back" />
     <section className="projects-section" id="projects">
@@ -66,7 +65,6 @@ const ProjectsPage = () => (
         <h2>Projects</h2>
         <p>Real-world projects I’ve built!</p>
       </div>
-      {/* See More button removed */}
       <div className="projects-grid">
         {projects.map((project) => (
           <div key={project.id} className="project-card">
@@ -93,7 +91,7 @@ const ProjectsPage = () => (
       </div>
     </section>
     <Footer />
-  </div>
+  </>
 );
 
 export default ProjectsPage;

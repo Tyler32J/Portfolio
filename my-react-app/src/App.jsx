@@ -15,7 +15,6 @@ function App() {
       <NavBar/>
       <Hero/>
       <Stats/>
-      {/* <SeeMoreButton/> */}
       <Skills/>
       <Certifications/>
       <Projects/>
