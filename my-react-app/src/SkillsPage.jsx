@@ -44,7 +44,21 @@ const skills = [
   { imgSrc: '/canva.svg', label: 'Canva', desc: 'Design Tool', link: "https://www.canva.com/features/" },
   { imgSrc: '/vscode.svg', label: 'Visual Studio Code', desc: 'IDEs/Code Editors', link: "https://code.visualstudio.com/docs" },
   { imgSrc: '/intellij.svg', label: 'IntelliJ', desc: 'IDEs/Code Editors', link: "https://www.jetbrains.com/idea/" },
+  { imgSrc: '/github_icon.svg', label: 'GitHub', desc: 'Code Hosting & Version Control', link: "https://github.com/github" },
   { imgSrc: '/postman.svg', label: 'Postman', desc: 'API Testing Tool', link: "https://www.postman.com/" },
+  { imgSrc: '/azure.svg', label: 'Azure', desc: 'Microsoft’s Cloud Platform ', link: "https://azure.microsoft.com" },
+  { imgSrc: '/active-directory.svg', label: 'Active Directory', desc: 'Microsoft’s Cloud Platform ', link: "https://activedirectorypro.com/what-is-active-directory/" },
+  { imgSrc: '/sharepoint.svg', label: 'Sharepoint', desc: 'Company Sites & File Sharing', link: "https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration" },
+  { imgSrc: '/excel_icon.svg', label: 'Excel', desc: 'Spreadsheets & Data Analysis', link: "https://www.microsoft.com/en-us/microsoft-365/excel" },
+  { imgSrc: '/word_icon.svg', label: 'Word', desc: 'Document Creation', link: "" },
+  { imgSrc: '/powerpoint_icon.svg', label: 'PowerPoint', desc: 'Presentations & Slides', link: "" },
+  { imgSrc: '/onedrive_icon.svg', label: 'OneDrive', desc: 'Cloud Storage', link: "" },
+  { imgSrc: '/outlook_icon.svg', label: 'Outlook', desc: 'Email & Calendar', link: "" },
+  { imgSrc: '/teams_icon.svg', label: 'Teams', desc: 'Chat & Meetings', link: "" },
+  { imgSrc: '/zoom_icon.svg', label: 'Zoom', desc: 'Video Meetings & Collaboration', link: "" },
+  { imgSrc: '/google_meet_icon.svg', label: 'Google Meet', desc: 'Video Meetings', link: "" },
+  { imgSrc: '/google_drive_icon.svg', label: 'Google Drive', desc: 'Cloud Storage', link: "" },
+  { imgSrc: '/google_docs_icon.svg', label: 'Google docs', desc: 'Online Document Editing', link: "" },
 ];
 
 const SkillsPage = () => (

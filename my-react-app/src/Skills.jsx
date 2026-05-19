@@ -45,7 +45,7 @@ const skills = [
   { imgSrc: '/canva.svg', label: 'Canva', desc: 'Design Tool', link: "https://www.canva.com/features/" },
   { imgSrc: '/vscode.svg', label: 'Visual Studio Code', desc: 'IDEs/Code Editors', link: "https://code.visualstudio.com/docs" },
   { imgSrc: '/intellij.svg', label: 'IntelliJ', desc: 'IDEs/Code Editors', link: "https://www.jetbrains.com/idea/" },
-  { imgSrc: '/postman.svg', label: 'Postman', desc: 'API Testing Tool', link: "https://www.postman.com/" },
+  { imgSrc: '/github_icon.svg', label: 'GitHub', desc: 'Code Hosting & Version Control', link: "https://github.com/github" },
 ];
 
 const Skills = () => (
