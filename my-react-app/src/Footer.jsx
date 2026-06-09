@@ -61,7 +61,7 @@ const Footer = () => {
           <ul className="footer-contact">
             <li>
               <span className="contact-icon">📧</span>
-              <span><a href="mailto:tfarrell@basecampcodingacademy.org">tfarrell@basecampcodingacademy.org</a></span>
+              <span><a href="mailto:farrelltyler32@gmail.com">farrelltyler32@gmail.com</a></span>
             </li>
             <li>
               <span className="contact-icon">📞</span>
