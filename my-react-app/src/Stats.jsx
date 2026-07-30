@@ -5,7 +5,7 @@ const Stats = () => {
     { value: '1+', label: 'Years Experience' },
     { value: '7+', label: 'Completed Projects' },
     { value: '2000+', label: 'Coding Hours' },
-    { value: '15+', label: 'Tech Stack' },
+    { value: '30+', label: 'Tech Stack' },
   ];
 
   return (
