@@ -11,6 +11,7 @@ const certifications = [
     // statusClass: "in-progress",
     title: "Full Stack Development",
     date: "Graduated 2026",
+    year: "2026",
     issuer: "Base Camp Coding Academy",
     description:
       "Comprehensive full-stack web development program covering React, Python, Django, and modern web technologies.",
@@ -27,6 +28,7 @@ const certifications = [
     statusClass: "completed",
     title: "Associates Degree",
     date: "Graduated 2024",
+    year: "2024",
     issuer: "Mississippi Gulf Coast Community College",
     description:
       "Associate degree emphasizing essential general‑education studies and versatile skills for academic and professional growth.",
@@ -41,6 +43,7 @@ const certifications = [
     statusClass: "completed",
     title: "Welding and Cutting Technology",
     date: "Graduated 2020",
+    year: "2020",
     issuer: " Pearl River Community College",
     description:
       " Gained hands‑on experience in Arc, MIG, TIG, Stick, and flux‑core welding, along with pipe welding and plasma cutting.",
@@ -116,62 +119,35 @@ export default function Certifications() {
                 if (e.key === "Enter" || e.key === " ") setOpenModal(cert.id);
               }}
             >
-              <div className="cert-header">
-                <svg
-                  className="cert-icon"
-                  width="32"
-                  height="32"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M12 15l-3 3m0 0l-3-3m3 3V9m9 12c0-3.5-2-6-6-6s-6 2.5-6 6"></path>
-                  <circle cx="12" cy="6" r="4"></circle>
-                </svg>
-                <span className={`cert-status ${cert.statusClass}`}>
-                  {cert.status}
-                </span>
+              <div className="cert-rail">
+                <span className="timeline-dot"></span>
+                <span className="timeline-line"></span>
+                <span className="timeline-year">{cert.year}</span>
+                <span className="timeline-dot"></span>
               </div>
-              <h3 className="cert-title">{cert.title}</h3>
-              <div className="cert-date">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <rect
-                    x="3"
-                    y="4"
-                    width="18"
-                    height="18"
-                    rx="2"
-                    ry="2"
-                  ></rect>
-                  <line x1="16" y1="2" x2="16" y2="6"></line>
-                  <line x1="8" y1="2" x2="8" y2="6"></line>
-                  <line x1="3" y1="10" x2="21" y2="10"></line>
-                </svg>
-                <span>{cert.date}</span>
-              </div>
-              <p className="cert-issuer">{cert.issuer}</p>
-              <p className="cert-description">{cert.description}</p>
-              <div className="view-cert-hint">
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                >
-                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                  <circle cx="12" cy="12" r="3"></circle>
-                </svg>
-                <span>Click to view certificate</span>
+              <div className="cert-content">
+                <div className="cert-header">
+                  <span className={`cert-status ${cert.statusClass}`}>
+                    {cert.status}
+                  </span>
+                </div>
+                <h3 className="cert-title">{cert.title}</h3>
+                <p className="cert-issuer">{cert.issuer}</p>
+                <p className="cert-description">{cert.description}</p>
+                <div className="view-cert-hint">
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                    <circle cx="12" cy="12" r="3"></circle>
+                  </svg>
+                  <span>Click to view certificate</span>
+                </div>
               </div>
             </div>
           ))}
