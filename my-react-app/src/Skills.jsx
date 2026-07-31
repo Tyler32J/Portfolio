@@ -31,21 +31,21 @@ const SkillCard = ({ imgSrc, label, desc, link }) => {
 
 
 const skills = [
-  { imgSrc: '/python.svg', label: 'Python', desc: 'Programming Language', link: "https://www.w3schools.com/python/python_intro.asp" },
-  { imgSrc: '/javascript.svg', label: 'JavaScript', desc: 'Programming Language', link: "https://www.w3schools.com/js/js_intro.asp" },
-  { imgSrc: '/html.svg', label: 'HTML', desc: 'Markup Language', link: "https://www.w3schools.com/html/html_intro.asp" },
-  { imgSrc: '/css.svg', label: 'CSS', desc: 'Styling Language', link:"https://www.w3schools.com/css/css_intro.asp" },
-  { imgSrc: '/java.svg', label: 'Java', desc: 'Programming Language', link: "https://www.w3schools.com/js/js_intro.asp" },
-  { imgSrc: '/django.svg', label: 'Django', desc: 'Python Framework', link: "https://www.w3schools.com/django/django_intro.php" },
-  { imgSrc: '/spring.svg', label: 'Spring Framework', desc: 'Java Framework', link: "https://spring.io/projects/spring-framework" },
-  { imgSrc: '/sql.svg', label: 'SQL', desc: 'Database', link: "https://www.w3schools.com/sql/sql_intro.asp" },
-  { imgSrc: '/react.svg', label: 'React', desc: 'JavaScript Framework', link: "https://react.dev/learn/react-compiler/introduction" },
-  { imgSrc: '/tailwindcss.svg', label: 'TailwindCSS', desc: 'CSS Framework', link: "https://tailwindcss.com/docs/styling-with-utility-classes" },
-  { imgSrc: '/figma.svg', label: 'Figma', desc: 'Design Tool', link: "https://www.figma.com/design/" },
-  { imgSrc: '/canva.svg', label: 'Canva', desc: 'Design Tool', link: "https://www.canva.com/features/" },
-  { imgSrc: '/vscode.svg', label: 'Visual Studio Code', desc: 'IDEs/Code Editors', link: "https://code.visualstudio.com/docs" },
-  { imgSrc: '/intellij.svg', label: 'IntelliJ', desc: 'IDEs/Code Editors', link: "https://www.jetbrains.com/idea/" },
-  { imgSrc: '/github_icon.svg', label: 'GitHub', desc: 'Code Hosting & Version Control', link: "https://github.com/github" },
+  { imgSrc: '/skills/python.svg', label: 'Python', desc: 'Programming Language', link: "https://www.w3schools.com/python/python_intro.asp" },
+  { imgSrc: '/skills/javascript.svg', label: 'JavaScript', desc: 'Programming Language', link: "https://www.w3schools.com/js/js_intro.asp" },
+  { imgSrc: '/skills/html.svg', label: 'HTML', desc: 'Markup Language', link: "https://www.w3schools.com/html/html_intro.asp" },
+  { imgSrc: '/skills/css.svg', label: 'CSS', desc: 'Styling Language', link:"https://www.w3schools.com/css/css_intro.asp" },
+  { imgSrc: '/skills/java.svg', label: 'Java', desc: 'Programming Language', link: "https://www.w3schools.com/js/js_intro.asp" },
+  { imgSrc: '/skills/django.svg', label: 'Django', desc: 'Python Framework', link: "https://www.w3schools.com/django/django_intro.php" },
+  { imgSrc: '/skills/spring.svg', label: 'Spring Framework', desc: 'Java Framework', link: "https://spring.io/projects/spring-framework" },
+  { imgSrc: '/skills/sql.svg', label: 'SQL', desc: 'Database', link: "https://www.w3schools.com/sql/sql_intro.asp" },
+  { imgSrc: '/skills/react.svg', label: 'React', desc: 'JavaScript Framework', link: "https://react.dev/learn/react-compiler/introduction" },
+  { imgSrc: '/skills/tailwindcss.svg', label: 'TailwindCSS', desc: 'CSS Framework', link: "https://tailwindcss.com/docs/styling-with-utility-classes" },
+  { imgSrc: '/skills/figma.svg', label: 'Figma', desc: 'Design Tool', link: "https://www.figma.com/design/" },
+  { imgSrc: '/skills/canva.svg', label: 'Canva', desc: 'Design Tool', link: "https://www.canva.com/features/" },
+  { imgSrc: '/skills/vscode.svg', label: 'Visual Studio Code', desc: 'IDEs/Code Editors', link: "https://code.visualstudio.com/docs" },
+  { imgSrc: '/skills/intellij.svg', label: 'IntelliJ', desc: 'IDEs/Code Editors', link: "https://www.jetbrains.com/idea/" },
+  { imgSrc: '/skills/github_icon.svg', label: 'GitHub', desc: 'Code Hosting & Version Control', link: "https://github.com/github" },
 ];
 
 const Skills = () => (

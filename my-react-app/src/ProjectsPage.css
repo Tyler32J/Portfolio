@@ -1,6 +1,22 @@
 .projects-section {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
   padding: 40px 0;
   background:transparent;
+}
+
+.projects-section .section-header,
+.projects-section .see-more-container,
+.projects-section .projects-grid {
+  max-width: 96rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projects-section .see-more-container {
+  padding: 0 2rem;
 }
 
 .projects-title {

@@ -18,7 +18,7 @@ const Footer = () => {
               rel="noreferrer"
               aria-label="GitHub"
             >
-              <img src="/github.svg" alt="GitHub" className="social-img" />
+              <img src="/assets/github.svg" alt="GitHub" className="social-img" />
             </a>
 
             <a
@@ -28,17 +28,17 @@ const Footer = () => {
               rel="noreferrer"
               aria-label="LinkedIn"
             >
-              <img src="/linkedin.svg" alt="LinkedIn" className="social-img" />
+              <img src="/assets/linkedin.svg" alt="LinkedIn" className="social-img" />
             </a>
 
             <a
-              href="/resume.pdf"
+              href="/assets/resume.pdf"
               className="footer-social-icon"
               target="_blank"
               rel="noreferrer"
               aria-label="Resume"
             >
-              <img src="/resume.svg" alt="Resume" className="social-img" />
+              <img src="/assets/resume.svg" alt="Resume" className="social-img" />
             </a>
           </div>
         </div>

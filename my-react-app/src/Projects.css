@@ -1,10 +1,30 @@
 .projects-section {
   margin-top: 6rem;
-  margin-left: 4rem;
-  margin-right: 4rem;
   margin-bottom: 4rem;
   padding: 40px 0;
   background:transparent;
+}
+
+.projects-section .section-header,
+.projects-section .see-more-container,
+.projects-section .back-btn-container,
+.projects-section .projects-grid {
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projects-section .see-more-container {
+  padding: 0 2rem;
+}
+
+.projects-section .back-btn-container {
+  position: static;
+  justify-content: flex-start;
+  top: auto;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  padding: 0 2rem;
 }
 
 .projects-title {

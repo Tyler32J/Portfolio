@@ -22,7 +22,7 @@ const Hero = () => {
         </div>
         <div className="hero-image-container">
           <img 
-            src="Portfolio_Image.png" 
+            src="/assets/portfolio_image.png"
             alt="Tyler Farrell" 
             className="hero-image"
           />

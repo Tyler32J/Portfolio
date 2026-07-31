@@ -1,12 +1,15 @@
 /* Certifications Section */
 .certifications-section {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
   padding: 4rem 1.5rem;
   background-color: #18181b !important; /* Force dark background */
   color: #fafafa;
 }
 
 .container {
-  max-width: 80rem;
+  max-width: 96rem;
   margin: 0 auto;
 }
 
@@ -264,16 +267,11 @@
 
 .modal-footer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   padding: 1.5rem 2rem;
   border-top: 1px solid #3f3f46;
   background: rgba(39, 39, 42, 0.5);
-}
-
-.modal-actions {
-  display: flex;
-  gap: 1rem;
 }
 
 .btn {
@@ -288,27 +286,6 @@
   transition: all 0.3s;
   text-decoration: none;
   border: none;
-}
-
-.btn-download {
-  background: #0ea5e9;
-  color: #fff;
-}
-
-.btn-download:hover {
-  background: #0284c7;
-  transform: translateY(-2px);
-}
-
-.btn-verify {
-  background: #27272a;
-  color: #fff;
-  border: 1px solid #3f3f46;
-}
-
-.btn-verify:hover {
-  background: #32323a;
-  transform: translateY(-2px);
 }
 
 .btn-close {

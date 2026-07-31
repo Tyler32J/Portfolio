@@ -16,26 +16,20 @@ const certifications = [
     description:
       "Comprehensive full-stack web development program covering React, Python, Django, and modern web technologies.",
     certImg:
-      "https://via.placeholder.com/800x600/1f2937/3b82f6?text=Full+Stack+Development+Certificate",
-    download: "path/to/certificate.pdf",
-    verify: "#verify",
-    verifyText: "Verify",
-    showVerify: true,
+      "/certifications/full_stack_development_certification.png",
   },
   {
     id: "cert2",
     status: "Completed",
     statusClass: "completed",
-    title: "Associates Degree",
+    title: "Associates Degree of Art",
     date: "Graduated 2024",
     year: "2024",
     issuer: "Mississippi Gulf Coast Community College",
     description:
-      "Associate degree emphasizing essential general‑education studies and versatile skills for academic and professional growth.",
+      "Associate degree of Art emphasizing essential general‑education studies and versatile skills for academic and professional growth.",
     certImg:
-      "https://via.placeholder.com/800x600/1f2937/22c55e?text=Computer+and+Graphic+Design+Certificate",
-    download: "path/to/certificate.pdf",
-    showVerify: false,
+      "/certifications/associate_of_arts.png",
   },
   {
     id: "cert3",
@@ -48,11 +42,124 @@ const certifications = [
     description:
       " Gained hands‑on experience in Arc, MIG, TIG, Stick, and flux‑core welding, along with pipe welding and plasma cutting.",
     certImg:
-      "https://via.placeholder.com/800x600/1f2937/eab308?text=Responsive+Web+Design+Certificate",
-    download: "path/to/certificate.pdf",
-    verify: "https://www.freecodecamp.org/certification/",
-    verifyText: "Verify",
-    showVerify: true,
+      "/certifications/welding_cutting_technical_certificate.png",
+  },
+  {
+    id: "cert4",
+    status: "Completed",
+    statusClass: "completed",
+    title: "High School Diploma",
+    date: "Graduated 2018",
+    year: "2018",
+    issuer: " Bay High School",
+    description:
+      "Completed with a strong foundation in general education and essential academic skills.",
+    certImg:
+      "/certifications/coming_soon.png",
+  },
+   {
+    id: "cert5",
+    status: "Completed",
+    statusClass: "completed",
+    title: "Forklift Certification",
+    date: "Graduated 2020",
+    year: "2020",
+    issuer: "Yale",
+    description:
+      "Yale Corporation's Operator Training Program",
+    certImg:
+      "/certifications/forklife_certification.png",
+  },
+  {
+    id: "cert6",
+    status: "Completed",
+    statusClass: "completed",
+    title: "Claude 101",
+    date: "Graduated 2026",
+    year: "2026",
+    issuer: "Anthropic",
+    description:
+      "Claude 101 teaches the basics of using the Claude AI",
+    certImg:
+      "/certifications/claude_101.png",
+  },
+  {
+    id: "cert7",
+    status: "Completed",
+    statusClass: "completed",
+    title: "Claude Code 101",
+    date: "Graduated 2026",
+    year: "2026",
+    issuer: "Anthropic",
+    description:
+      "Claude Code 101 teaches the basics of using Claude for coding tasks like debugging, generating code, and understanding programming concepts.",
+    certImg:
+      "/certifications/claude_code_101.png",
+  },
+  {
+    id: "cert8",
+    status: "Completed",
+    statusClass: "completed",
+    title: "Claude Code in Action",
+    date: "Graduated 2026",
+    year: "2026",
+    issuer: "Anthropic",
+    description:
+      "Claude Code in Action shows how to use Claude AI to solve real coding problems through hands‑on examples and practical workflows.",
+    certImg:
+      "/certifications/claude_code_in_action.png",
+  },
+   {
+    id: "cert9",
+    status: "Completed",
+    statusClass: "completed",
+    title: "Claude Platform 101",
+    date: "Graduated 2026",
+    year: "2026",
+    issuer: "Anthropic",
+    description:
+      "Claude Platform 101 introduces the core tools and features of the Claude AI platform and teaches how to use them effectively.",
+    certImg:
+      "/certifications/claude_platform_101.png",
+  },
+  {
+    id: "cert10",
+    status: "Completed",
+    statusClass: "completed",
+    title: "Introdution to Claude Cowork",
+    date: "Graduated 2026",
+    year: "2026",
+    issuer: "Anthropic",
+    description:
+      "Introduction to Claude Cowork teaches how to collaborate with Claude AI on tasks like writing, planning, and problem‑solving in a shared workspace.",
+    certImg:
+      "/certifications/introduction_to_claude_cowork.png",
+  },
+  {
+    id: "cert11",
+    status: "Completed",
+    statusClass: "completed",
+    title: "AI Fluency for Educators",
+    date: "Graduated 2026",
+    year: "2026",
+    issuer: "Anthropic",
+    description:
+      "AI Fluency for Educators teaches teachers how to confidently use, understand, and integrate AI tools into instruction, planning, and student support.",
+    certImg:
+      "/certifications/ai_fluency_for_educators.png",
+  },
+  {
+    id: "cert12",
+    status: "Completed",
+    statusClass: "completed",
+    title: "AI Fluency for Students",
+    date: "Graduated 2026",
+    year: "2026",
+    issuer: "Anthropic",
+    description:
+      "AI Fluency for Students teaches learners how to understand, use, and communicate effectively with modern AI tools in academic and real‑world tasks.",
+    certImg:
+      "/certifications/ai_fluency_for_students.png",
   },
 ];
 
@@ -83,13 +190,13 @@ export default function CertificationsPage() {
   return (
     <div>
       <NavBar />
-      <BackButton to="/" label="Back" />
       <section id="certifications" className="certifications-section">
         <div className="container">
           <div className="section-header">
             <h2>Certifications & Education</h2>
             <p>Professional credentials and achievements</p>
           </div>
+          <BackButton to="/" label="Back" />
           {/* See More button removed */}
           <div className="certifications-grid">
             {certifications.map((cert) => (
@@ -181,49 +288,6 @@ export default function CertificationsPage() {
                   </div>
                 </div>
                 <div className="modal-footer">
-                  <div className="modal-actions">
-                    <a
-                      href={cert.download}
-                      download
-                      className="btn btn-download"
-                    >
-                      <svg
-                        width="18"
-                        height="18"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                      >
-                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                        <polyline points="7 10 12 15 17 10"></polyline>
-                        <line x1="12" y1="15" x2="12" y2="3"></line>
-                      </svg>
-                      Download
-                    </a>
-                    {cert.showVerify && (
-                      <a
-                        href={cert.verify}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn btn-verify"
-                      >
-                        <svg
-                          width="18"
-                          height="18"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          stroke="currentColor"
-                          strokeWidth="2"
-                        >
-                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                          <polyline points="15 3 21 3 21 9"></polyline>
-                          <line x1="10" y1="14" x2="21" y2="3"></line>
-                        </svg>
-                        {cert.verifyText}
-                      </a>
-                    )}
-                  </div>
                   <button
                     className="btn btn-close"
                     onClick={() => setOpenModal(null)}

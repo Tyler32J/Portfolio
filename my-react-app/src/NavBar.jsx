@@ -26,7 +26,7 @@ const NavBar = () => {
             rel="noreferrer"
             aria-label="GitHub"
           >
-            <img src="/github.svg" alt="GitHub" />
+            <img src="/assets/github.svg" alt="GitHub" />
           </a>
 
           <a
@@ -36,17 +36,17 @@ const NavBar = () => {
             rel="noreferrer"
             aria-label="LinkedIn"
           >
-            <img src="/linkedin.svg" alt="LinkedIn" />
+            <img src="/assets/linkedin.svg" alt="LinkedIn" />
           </a>
 
           <a
-            href="/resume.pdf"
+            href="/assets/resume.pdf"
             className="navbar-social-icon"
             target="_blank"
             rel="noreferrer"
             aria-label="Resume"
           >
-            <img src="/resume.svg" alt="Resume" />
+            <img src="/assets/resume.svg" alt="Resume" />
           </a>
         </div>
 
