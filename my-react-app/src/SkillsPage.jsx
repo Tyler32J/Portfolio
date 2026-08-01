@@ -70,13 +70,13 @@ const skills = [
 const SkillsPage = () => (
   <>
     <NavBar />
-    <BackButton to="/" label="Back" />
     <section className="skills-section" id="skills">
       <div className="skills-container">
         <div className="section-header">
           <h2>Skills</h2>
           <p>Essential Tools I've learned and used!</p>
         </div>
+        <BackButton to="/" label="Back" />
         <div className="skills-grid">
           {skills.map((skill, key) => (
             <SkillCard

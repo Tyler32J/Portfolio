@@ -5,9 +5,16 @@
 }
 
 .skills-section {
-  margin: 5rem;
   padding: 4rem 1.5rem;
   background-color: #18181b;
+}
+
+.skills-section .back-btn-container {
+  position: static;
+  max-width: 100%;
+  justify-content: flex-start;
+  top: auto;
+  margin: 0 0 2rem 0;
 }
 
 .skills-container {

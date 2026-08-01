@@ -115,9 +115,23 @@
   font-size: 0.95rem;
 }
 
-.contact-icon {
-  font-size: 1.125rem;
+.footer-contact li a,
+.footer-contact li > span:not(.footer-contact-icon) {
+  color: #a1a1aa;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-contact li a:hover,
+.footer-contact li:hover > span:not(.footer-contact-icon) {
   color: #0ea5e9;
+}
+
+.footer-contact-icon {
+  width: 1.125rem;
+  height: 1.125rem;
+  color: #0ea5e9;
+  flex-shrink: 0;
 }
 
 .footer-bottom {
