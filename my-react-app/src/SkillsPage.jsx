@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import BackButton from "./BackButton";
+import useInView from "./useInView";
 import "./SkillsPage.css";
 
 // SkillCard component (same as Skills.jsx)
@@ -76,6 +77,16 @@ const filters = [
 
 const SkillsPage = () => {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [revealed, setRevealed] = useState(false);
+  const [gridRef] = useInView({ threshold: 0.15 }, () => setRevealed(true));
+
+  const handleFilterClick = (key) => {
+    setActiveFilter(key);
+    setRevealed(false);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setRevealed(true));
+    });
+  };
 
   const filteredSkills =
     activeFilter === 'all'
@@ -98,22 +109,27 @@ const SkillsPage = () => {
                 <button
                   key={filter.key}
                   className={`skills-filter-tab ${activeFilter === filter.key ? 'active' : ''}`}
-                  onClick={() => setActiveFilter(filter.key)}
+                  onClick={() => handleFilterClick(filter.key)}
                 >
                   {filter.label}
                 </button>
               ))}
             </div>
           </div>
-          <div className="skills-grid">
-            {filteredSkills.map((skill, key) => (
-              <SkillCard
-                key={key}
-                imgSrc={skill.imgSrc}
-                label={skill.label}
-                desc={skill.desc}
-                link={skill.link}
-              />
+          <div className="skills-grid" ref={gridRef} key={activeFilter}>
+            {filteredSkills.map((skill, index) => (
+              <div
+                key={skill.label}
+                className={`skill-reveal ${revealed ? "in" : ""}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
+              >
+                <SkillCard
+                  imgSrc={skill.imgSrc}
+                  label={skill.label}
+                  desc={skill.desc}
+                  link={skill.link}
+                />
+              </div>
             ))}
           </div>
         </div>

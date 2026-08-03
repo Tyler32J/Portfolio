@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import BackButton from "./BackButton";
+import useInView from "./useInView";
 import "./Projects.css";
 
 
@@ -71,6 +72,16 @@ const filters = [
 
 const ProjectsPage = () => {
   const [activeFilter, setActiveFilter] = useState("all");
+  const [revealed, setRevealed] = useState(false);
+  const [gridRef] = useInView({ threshold: 0.15 }, () => setRevealed(true));
+
+  const handleFilterClick = (key) => {
+    setActiveFilter(key);
+    setRevealed(false);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setRevealed(true));
+    });
+  };
 
   const filteredProjects =
     activeFilter === "all"
@@ -92,32 +103,38 @@ const ProjectsPage = () => {
             <button
               key={filter.key}
               className={`project-filter-tab ${activeFilter === filter.key ? "active" : ""}`}
-              onClick={() => setActiveFilter(filter.key)}
+              onClick={() => handleFilterClick(filter.key)}
             >
               {filter.label}
             </button>
           ))}
         </div>
       </div>
-      <div className="projects-grid">
-        {filteredProjects.map((project) => (
-          <div key={project.id} className="project-card">
-            <div className="project-img-wrapper">
-              <img src={project.image} alt={project.title} className="project-img" />
-            </div>
-            <div className="project-content">
-              <h3 className="project-name">{project.title}</h3>
-              <p className="project-description">{project.description}</p>
-              <div className="project-footer">
-                <div className="project-tech">{project.tech}</div>
-                <a
-                  href={project.link}
-                  className="view-project-btn"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  View Project
-                </a>
+      <div className="projects-grid" ref={gridRef} key={activeFilter}>
+        {filteredProjects.map((project, index) => (
+          <div
+            key={project.id}
+            className={`project-reveal ${revealed ? "in" : ""}`}
+            style={{ transitionDelay: `${index * 100}ms` }}
+          >
+            <div className="project-card">
+              <div className="project-img-wrapper">
+                <img src={project.image} alt={project.title} className="project-img" />
+              </div>
+              <div className="project-content">
+                <h3 className="project-name">{project.title}</h3>
+                <p className="project-description">{project.description}</p>
+                <div className="project-footer">
+                  <div className="project-tech">{project.tech}</div>
+                  <a
+                    href={project.link}
+                    className="view-project-btn"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Project
+                  </a>
+                </div>
               </div>
             </div>
           </div>

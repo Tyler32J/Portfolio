@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import BackButton from "./BackButton";
+import useInView from "./useInView";
 import "./CertificationsPage.css";
 
 const certifications = [
@@ -185,6 +186,16 @@ const filters = [
 export default function CertificationsPage() {
   const [openModal, setOpenModal] = useState(null);
   const [activeFilter, setActiveFilter] = useState("all");
+  const [revealed, setRevealed] = useState(false);
+  const [gridRef] = useInView({ threshold: 0.15 }, () => setRevealed(true));
+
+  const handleFilterClick = (key) => {
+    setActiveFilter(key);
+    setRevealed(false);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => setRevealed(true));
+    });
+  };
 
   const filteredCertifications =
     activeFilter === "all"
@@ -228,54 +239,59 @@ export default function CertificationsPage() {
                 <button
                   key={filter.key}
                   className={`cert-filter-tab ${activeFilter === filter.key ? "active" : ""}`}
-                  onClick={() => setActiveFilter(filter.key)}
+                  onClick={() => handleFilterClick(filter.key)}
                 >
                   {filter.label}
                 </button>
               ))}
             </div>
           </div>
-          <div className="certifications-grid">
-            {filteredCertifications.map((cert) => (
+          <div className="certifications-grid" ref={gridRef} key={activeFilter}>
+            {filteredCertifications.map((cert, index) => (
               <div
-                className="cert-card"
                 key={cert.id}
-                onClick={() => setOpenModal(cert.id)}
-                tabIndex={0}
-                role="button"
-                aria-label={`View ${cert.title} certificate`}
-                onKeyPress={(e) => {
-                  if (e.key === "Enter" || e.key === " ") setOpenModal(cert.id);
-                }}
+                className={`cert-reveal ${revealed ? "in" : ""}`}
+                style={{ transitionDelay: `${index * 100}ms` }}
               >
-                <div className="cert-rail">
-                  <span className="timeline-dot"></span>
-                  <span className="timeline-line"></span>
-                  <span className="timeline-year">{cert.year}</span>
-                  <span className="timeline-dot"></span>
-                </div>
-                <div className="cert-content">
-                  <div className="cert-header">
-                    <span className={`cert-status ${cert.statusClass}`}>
-                      {cert.status}
-                    </span>
+                <div
+                  className="cert-card"
+                  onClick={() => setOpenModal(cert.id)}
+                  tabIndex={0}
+                  role="button"
+                  aria-label={`View ${cert.title} certificate`}
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter" || e.key === " ") setOpenModal(cert.id);
+                  }}
+                >
+                  <div className="cert-rail">
+                    <span className="timeline-dot"></span>
+                    <span className="timeline-line"></span>
+                    <span className="timeline-year">{cert.year}</span>
+                    <span className="timeline-dot"></span>
                   </div>
-                  <h3 className="cert-title">{cert.title}</h3>
-                  <p className="cert-issuer">{cert.issuer}</p>
-                  <p className="cert-description">{cert.description}</p>
-                  <div className="view-cert-hint">
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    >
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
-                      <circle cx="12" cy="12" r="3"></circle>
-                    </svg>
-                    <span>Click to view certificate</span>
+                  <div className="cert-content">
+                    <div className="cert-header">
+                      <span className={`cert-status ${cert.statusClass}`}>
+                        {cert.status}
+                      </span>
+                    </div>
+                    <h3 className="cert-title">{cert.title}</h3>
+                    <p className="cert-issuer">{cert.issuer}</p>
+                    <p className="cert-description">{cert.description}</p>
+                    <div className="view-cert-hint">
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                      >
+                        <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                        <circle cx="12" cy="12" r="3"></circle>
+                      </svg>
+                      <span>Click to view certificate</span>
+                    </div>
                   </div>
                 </div>
               </div>

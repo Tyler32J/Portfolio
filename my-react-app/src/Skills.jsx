@@ -1,5 +1,6 @@
 import './Skills.css';
 import SeeMoreButton from "./SeeMoreButton";
+import useInView from "./useInView";
 
 const SkillCard = ({ imgSrc, label, desc, link }) => {
   const cardContent = (
@@ -49,29 +50,38 @@ const skills = [
   { imgSrc: '/skills/github_icon.svg', label: 'GitHub', desc: 'Code Hosting & Version Control', link: "https://github.com/github" },
 ];
 
-const Skills = () => (
-  <section className="skills-section" id="skills">
-    <div className="skills-container">
-      <div className="section-header">
-        <h2>Skills</h2>
-        <p>Essential Tools I've learned and used!</p>
+const Skills = () => {
+  const [gridRef, inView] = useInView({ threshold: 0.2 });
+
+  return (
+    <section className="skills-section" id="skills">
+      <div className="skills-container">
+        <div className="section-header">
+          <h2>Skills</h2>
+          <p>Essential Tools I've learned and used!</p>
+        </div>
+        <div className="see-more-container">
+          <SeeMoreButton href="/skills" />
+        </div>
+        <div className="skills-grid" ref={gridRef}>
+          {skills.map((skill, index) => (
+            <div
+              key={skill.label}
+              className={`skill-reveal ${inView ? "in" : ""}`}
+              style={{ transitionDelay: `${index * 100}ms` }}
+            >
+              <SkillCard
+                imgSrc={skill.imgSrc}
+                label={skill.label}
+                desc={skill.desc}
+                link={skill.link}
+              />
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="see-more-container">
-        <SeeMoreButton href="/skills" />
-      </div>
-      <div className="skills-grid">
-        {skills.map((skill, key) => (
-          <SkillCard
-            key={key}
-            imgSrc={skill.imgSrc}
-            label={skill.label}
-            desc={skill.desc}
-            link={skill.link}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default Skills;

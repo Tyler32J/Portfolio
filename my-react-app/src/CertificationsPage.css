@@ -87,9 +87,31 @@
   gap: 2rem;
 }
 
+.cert-reveal {
+  height: 100%;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cert-reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cert-reveal {
+    transition: opacity 0.3s linear;
+    transform: none;
+  }
+}
+
 /* Certification Card */
 .cert-card {
   display: flex;
+  height: 100%;
+  box-sizing: border-box;
   border-radius: 0.75rem;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
