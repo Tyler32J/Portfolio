@@ -37,7 +37,7 @@ const projects = [
   },
   {
     id: 6,
-    title: "Dice Game",
+    title: "Dice Game (Terminal)",
     description: "A simple Python terminal dice game where the player rolls a virtual die to get a random number between 1 and 6, with results displayed in the console. Players can roll repeatedly and try to beat their previous rolls.",
     image: "/projects/dice_rolling_simulator.png",
     link: "https://github.com/Tyler32J/Dice-Game.git",

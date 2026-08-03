@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import "./BackButton.css";
 
-const BackButton = ({ to = "/", label = "Back" }) => {
+const BackButton = ({ label = "Back" }) => {
   const navigate = useNavigate();
 
   return (
     <div className="back-btn-container">
       <button
         className="back-btn"
-        onClick={() => navigate(to)}
+        onClick={() => navigate(-1)}
         aria-label={label}
       >
         <svg

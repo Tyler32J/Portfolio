@@ -45,21 +45,21 @@ const projects = [
   },
   {
     id: 6,
-    title: "Dice Game",
+    title: "Dice Game (Terminal)",
     description: "A simple Python terminal dice game where the player rolls a virtual die to get a random number between 1 and 6, with results displayed in the console. Players can roll repeatedly and try to beat their previous rolls.",
     image: "/projects/dice_rolling_simulator.png",
     link: "https://github.com/Tyler32J/Dice-Game.git",
     tech: "Python",
-    category: "website"
+    category: "game"
   },
   {
     id: 7,
-    title: "Game Collection Manager",
+    title: "Game Collection Manager (Terminal) ",
     description: "Game Collection Manager is a Java terminal application designed to help users manage their personal video game library. Users can add new games, view their collection, update information, and remove games they no longer own.",
     image: "/projects/game_collection_manager.png",
     link: "https://github.com/Tyler32J/Game-Collection-Manager",
     tech: "Java",
-    category: "website"
+    category: "game"
   }
 ];
 
@@ -110,6 +110,9 @@ const ProjectsPage = () => {
           ))}
         </div>
       </div>
+      {filteredProjects.length === 0 ? (
+        <p className="projects-empty-state">More projects in this category are on the way — check back soon!</p>
+      ) : (
       <div className="projects-grid" ref={gridRef} key={activeFilter}>
         {filteredProjects.map((project, index) => (
           <div
@@ -140,6 +143,7 @@ const ProjectsPage = () => {
           </div>
         ))}
       </div>
+      )}
     </section>
     <Footer />
   </>

@@ -90,9 +90,16 @@
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   gap: 2rem;
   padding: 0 2rem;
+}
+
+.projects-empty-state {
+  color: #a1a1aa;
+  font-size: 1rem;
+  text-align: center;
+  padding: 3rem 2rem 4rem;
 }
 
 .project-reveal {

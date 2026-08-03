@@ -7,14 +7,18 @@ import SkillsPage from './SkillsPage';
 import CertificationsPage from './CertificationsPage';
 import ProjectsPage from './ProjectsPage';
 import ContactPage from './ContactPage';
+import Preloader from './Preloader';
+import ScrollToTop from './ScrollToTop';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Router>
+      <Preloader />
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<App />}  />
         <Route path="/skills" element={<SkillsPage />} />
-        <Route path="/certifications" element={<CertificationsPage />} /> 
+        <Route path="/certifications" element={<CertificationsPage />} />
         <Route path="/projects" element={<ProjectsPage />} />
         <Route path="/contact" element={<ContactPage />} />
       </Routes>

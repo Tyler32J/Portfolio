@@ -1,0 +1,70 @@
+.preloader-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  transition: opacity 0.9s cubic-bezier(0.4, 0, 0.2, 1), filter 0.9s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.preloader-overlay.dismissed {
+  opacity: 0;
+  filter: blur(6px);
+  pointer-events: none;
+}
+
+.preloader-canvas {
+  display: block;
+  width: 360px;
+  height: 360px;
+}
+
+.preloader-status {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: #38bdf8;
+  text-shadow: 0 0 10px rgba(56, 189, 248, 0.6);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.preloader-cursor {
+  display: inline-block;
+  width: 7px;
+  height: 14px;
+  background: #38bdf8;
+  box-shadow: 0 0 8px rgba(56, 189, 248, 0.8);
+  animation: preloader-blink 1s steps(1) infinite;
+}
+
+@keyframes preloader-blink {
+  0%, 49% { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+.preloader-percent {
+  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-size: 11px;
+  color: #7c8792;
+  letter-spacing: 0.08em;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 480px) {
+  .preloader-canvas {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .preloader-overlay {
+    transition: opacity 0.3s linear;
+  }
+}
