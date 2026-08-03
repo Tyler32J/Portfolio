@@ -2,6 +2,7 @@
   text-decoration: none;
   color: inherit;
   display: block;
+  height: 100%;
 }
 
 .skills-section {
@@ -9,12 +10,53 @@
   background-color: #18181b;
 }
 
+.skills-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
 .skills-section .back-btn-container {
   position: static;
   max-width: 100%;
   justify-content: flex-start;
   top: auto;
-  margin: 0 0 2rem 0;
+  margin: 0;
+}
+
+.skills-filter-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skills-filter-tab {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.75rem 1.5rem;
+  background-color: transparent;
+  color: #0ea5e9;
+  border-radius: 2rem;
+  font-weight: 500;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: all 0.3s ease;
+  border: 2px solid #0ea5e9;
+  cursor: pointer;
+}
+
+.skills-filter-tab:hover {
+  background-color: #0284c7;
+  color: #fff;
+  opacity: 0.8;
+}
+
+.skills-filter-tab.active {
+  background-color: #0ea5e9;
+  color: #fff;
 }
 
 .skills-container {
@@ -55,6 +97,8 @@
   border-radius: 0.75rem;
   transition: all 0.3s;
   cursor: pointer;
+  height: 99px;
+  box-sizing: border-box;
 }
 
 .skill-card:hover {
@@ -70,6 +114,7 @@
 
 .skill-content {
   flex: 1;
+  min-width: 0;
 }
 
 .skill-name {
@@ -77,12 +122,18 @@
   font-weight: 600;
   color: #fafafa;
   margin: 0 0 0.25rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .skill-description {
   font-size: 0.875rem;
   color: #a1a1aa;
   margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .section-header h2 {

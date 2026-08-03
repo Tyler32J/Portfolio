@@ -17,6 +17,7 @@ const certifications = [
       "Comprehensive full-stack web development program covering React, Python, Django, and modern web technologies.",
     certImg:
       "/certifications/full_stack_development_certification.png",
+    category: "tech",
   },
   {
     id: "cert2",
@@ -30,6 +31,7 @@ const certifications = [
       "Associate degree of Art emphasizing essential general‑education studies and versatile skills for academic and professional growth.",
     certImg:
       "/certifications/associate_of_arts.png",
+    category: "education",
   },
   {
     id: "cert3",
@@ -43,6 +45,7 @@ const certifications = [
       " Gained hands‑on experience in Arc, MIG, TIG, Stick, and flux‑core welding, along with pipe welding and plasma cutting.",
     certImg:
       "/certifications/welding_cutting_technical_certificate.png",
+    category: "trade",
   },
   {
     id: "cert4",
@@ -56,6 +59,7 @@ const certifications = [
       "Completed with a strong foundation in general education and essential academic skills.",
     certImg:
       "/certifications/coming_soon.png",
+    category: "education",
   },
    {
     id: "cert5",
@@ -69,6 +73,7 @@ const certifications = [
       "Yale Corporation's Operator Training Program",
     certImg:
       "/certifications/forklife_certification.png",
+    category: "trade",
   },
   {
     id: "cert6",
@@ -82,6 +87,7 @@ const certifications = [
       "Claude 101 teaches the basics of using the Claude AI",
     certImg:
       "/certifications/claude_101.png",
+    category: "tech",
   },
   {
     id: "cert7",
@@ -95,6 +101,7 @@ const certifications = [
       "Claude Code 101 teaches the basics of using Claude for coding tasks like debugging, generating code, and understanding programming concepts.",
     certImg:
       "/certifications/claude_code_101.png",
+    category: "tech",
   },
   {
     id: "cert8",
@@ -108,6 +115,7 @@ const certifications = [
       "Claude Code in Action shows how to use Claude AI to solve real coding problems through hands‑on examples and practical workflows.",
     certImg:
       "/certifications/claude_code_in_action.png",
+    category: "tech",
   },
    {
     id: "cert9",
@@ -121,6 +129,7 @@ const certifications = [
       "Claude Platform 101 introduces the core tools and features of the Claude AI platform and teaches how to use them effectively.",
     certImg:
       "/certifications/claude_platform_101.png",
+    category: "tech",
   },
   {
     id: "cert10",
@@ -134,6 +143,7 @@ const certifications = [
       "Introduction to Claude Cowork teaches how to collaborate with Claude AI on tasks like writing, planning, and problem‑solving in a shared workspace.",
     certImg:
       "/certifications/introduction_to_claude_cowork.png",
+    category: "tech",
   },
   {
     id: "cert11",
@@ -147,6 +157,7 @@ const certifications = [
       "AI Fluency for Educators teaches teachers how to confidently use, understand, and integrate AI tools into instruction, planning, and student support.",
     certImg:
       "/certifications/ai_fluency_for_educators.png",
+    category: "tech",
   },
   {
     id: "cert12",
@@ -160,11 +171,25 @@ const certifications = [
       "AI Fluency for Students teaches learners how to understand, use, and communicate effectively with modern AI tools in academic and real‑world tasks.",
     certImg:
       "/certifications/ai_fluency_for_students.png",
+    category: "tech",
   },
+];
+
+const filters = [
+  { key: "all", label: "All" },
+  { key: "education", label: "Education" },
+  { key: "tech", label: "Tech & AI" },
+  { key: "trade", label: "Trade Certification" },
 ];
 
 export default function CertificationsPage() {
   const [openModal, setOpenModal] = useState(null);
+  const [activeFilter, setActiveFilter] = useState("all");
+
+  const filteredCertifications =
+    activeFilter === "all"
+      ? certifications
+      : certifications.filter((cert) => cert.category === activeFilter);
 
   // Prevent background scroll when modal is open
   useEffect(() => {
@@ -196,10 +221,22 @@ export default function CertificationsPage() {
             <h2>Certifications & Education</h2>
             <p>Professional credentials and achievements</p>
           </div>
-          <BackButton to="/" label="Back" />
-          {/* See More button removed */}
+          <div className="certifications-toolbar">
+            <BackButton to="/" label="Back" />
+            <div className="cert-filter-tabs">
+              {filters.map((filter) => (
+                <button
+                  key={filter.key}
+                  className={`cert-filter-tab ${activeFilter === filter.key ? "active" : ""}`}
+                  onClick={() => setActiveFilter(filter.key)}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+          </div>
           <div className="certifications-grid">
-            {certifications.map((cert) => (
+            {filteredCertifications.map((cert) => (
               <div
                 className="cert-card"
                 key={cert.id}
