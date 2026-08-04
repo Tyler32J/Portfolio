@@ -5,7 +5,7 @@
   gap: 8px;
   padding: 0.75rem 1.5rem;
   background-color: transparent;
-  color: #0ea5e9;
+  color: var(--color-accent);
   text-decoration: none;
   border-radius: 2rem;
   font-weight: 500;
@@ -13,7 +13,7 @@
   position: relative;
   z-index: 2;
   transition: all 0.3s ease;
-  border: 2px solid #0ea5e9;
+  border: 2px solid var(--color-accent);
   width: fit-content;
 }
 

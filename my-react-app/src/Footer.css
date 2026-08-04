@@ -1,6 +1,6 @@
 .footer {
-  background-color: #1f1f23;
-  color: #a1a1aa;
+  background-color: var(--color-card-bg);
+  color: var(--color-text-muted);
   padding: 4rem 1.5rem 2rem;
   width: 100vw;
   position: relative;
@@ -8,6 +8,7 @@
   right: 50%;
   margin-left: -50vw;
   margin-right: -50vw;
+  transition: background-color 0.25s ease;
 }
 
 .footer-container {
@@ -17,7 +18,7 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 2rem;
   padding-bottom: 3rem;
-  border-bottom: 1px solid #27272a;
+  border-bottom: 1px solid var(--color-border);
 }
 
 @media (max-width: 768px) {
@@ -36,12 +37,12 @@
 .footer-name {
   font-size: 1.75rem;
   font-weight: 600;
-  color:  #0ea5e9;
+  color: var(--color-accent);
   margin-bottom: 0.5rem;
 }
 
 .footer-tagline {
-  color: #a1a1aa;
+  color: var(--color-text-muted);
   line-height: 1.6;
   font-size: 0.95rem;
   max-width: 350px;
@@ -59,8 +60,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #27272a;
-  border: 1px solid #3f3f46;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
   border-radius: 0.5rem;
   text-decoration: none;
   transition: all 0.3s;
@@ -68,14 +69,14 @@
 }
 
 .footer-social-icon:hover {
-  border-color: #0ea5e9;
-  background-color: #2d2d31;
+  border-color: var(--color-accent);
+  background-color: var(--color-card-bg-hover);
 }
 
 .footer-heading {
   font-size: 1.125rem;
   font-weight: 600;
-  color: #fafafa;
+  color: var(--color-text);
   margin-bottom: 0.5rem;
 }
 
@@ -89,14 +90,14 @@
 }
 
 .footer-links a {
-  color: #a1a1aa;
+  color: var(--color-text-muted);
   text-decoration: none;
   transition: color 0.3s;
   font-size: 0.95rem;
 }
 
 .footer-links a:hover {
-  color:  #0ea5e9;
+  color: var(--color-accent);
 }
 
 .footer-contact {
@@ -117,20 +118,20 @@
 
 .footer-contact li a,
 .footer-contact li > span:not(.footer-contact-icon) {
-  color: #a1a1aa;
+  color: var(--color-text-muted);
   text-decoration: none;
   transition: color 0.3s;
 }
 
 .footer-contact li a:hover,
 .footer-contact li:hover > span:not(.footer-contact-icon) {
-  color: #0ea5e9;
+  color: var(--color-accent);
 }
 
 .footer-contact-icon {
   width: 1.125rem;
   height: 1.125rem;
-  color: #0ea5e9;
+  color: var(--color-accent);
   flex-shrink: 0;
 }
 
@@ -139,7 +140,7 @@
   margin: 0 auto;
   padding-top: 2rem;
   text-align: center;
-  color: #71717a;
+  color: var(--color-text-muted);
   font-size: 0.875rem;
 }
 

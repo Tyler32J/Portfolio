@@ -46,13 +46,13 @@
   align-items: center;
   padding: 0.75rem 1.5rem;
   background-color: transparent;
-  color: #0ea5e9;
+  color: var(--color-accent);
   border-radius: 2rem;
   font-weight: 500;
   font-size: 0.95rem;
   font-family: inherit;
   transition: all 0.3s ease;
-  border: 2px solid #0ea5e9;
+  border: 2px solid var(--color-accent);
   cursor: pointer;
 }
 
@@ -63,7 +63,7 @@
 }
 
 .project-filter-tab.active {
-  background-color: #0ea5e9;
+  background-color: var(--color-accent);
   color: #fff;
 }
 
@@ -72,11 +72,12 @@
   font-weight: 700;
   margin-bottom: 0.5rem;
   text-align: center;
+  color: var(--color-text);
 }
 
 .projects-subtitle {
   font-size: 1.2rem;
-  color: #666;
+  color: var(--color-text-muted);
   margin-bottom: 2rem;
   text-align: center;
 }
@@ -96,7 +97,7 @@
 }
 
 .projects-empty-state {
-  color: #a1a1aa;
+  color: var(--color-text-muted);
   font-size: 1rem;
   text-align: center;
   padding: 3rem 2rem 4rem;
@@ -127,19 +128,19 @@
   flex-direction: column;
   height: 100%;
   box-sizing: border-box;
-  background: #27272a;
+  background: var(--color-card-bg);
   border-radius: 18px;
   box-shadow: 0 4px 24px rgba(0,0,0,0.08);
   overflow: hidden;
   min-height: 420px;
   position: relative;
-  border: 1px solid #3f3f46; /* Add this line */
-  transition: box-shadow 0.2s, border-color 0.2s;
+  border: 1px solid var(--color-border);
+  transition: box-shadow 0.2s, border-color 0.2s, background-color 0.25s ease;
 }
 
 .project-card:hover {
   box-shadow: 0 8px 32px rgba(0,0,0,0.16);
-  border-color: #0ea5e9;
+  border-color: var(--color-accent);
 }
 
 .project-img-wrapper {
@@ -169,7 +170,7 @@
 .project-name {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #fafafa;
+  color: var(--color-text);
   margin-bottom: 0.5rem;
   margin-top: 0.5rem;
   line-height: 1.2;
@@ -177,7 +178,7 @@
 
 .project-description {
   font-size: 1rem;
-  color: #fafafa;      
+  color: var(--color-text);
   margin-bottom: 1.5rem;
   flex: 1;
 }
@@ -191,7 +192,7 @@
 
 .project-tech {
   font-size: 0.95rem;
-  color: #888;
+  color: var(--color-text-muted);
   min-width: 0;
 }
 
@@ -200,8 +201,8 @@
   align-items: center;
   gap: 0.5rem;
   background: transparent;
-  color: #0ea5e9;
-  border: 2px solid #0ea5e9;
+  color: var(--color-accent);
+  border: 2px solid var(--color-accent);
   border-radius: 9999px;
   padding: 0.5rem 1.5rem;
   font-weight: 600;
@@ -218,12 +219,12 @@
 }
 
 .view-project-btn:hover {
-  background: #0ea5e9;
+  background: var(--color-accent);
   color: #fff;
 }
 
 .section-header h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #fafafa;
+  color: var(--color-text);
 }

@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import useTheme from "./useTheme";
+import ThemeToggle from "./ThemeToggle";
 import './NavBar.css';
 
 const NavBar = () => {
   const [open, setOpen] = useState(false);
+  const [theme, toggleTheme] = useTheme();
 
   return (
     <nav className="navbar">
       <div className="navbar-container">
         <div className="navbar-logo">Portfolio</div>
         
-        <div className="navbar-menu">
+        <div className={`navbar-menu ${open ? "open" : ""}`}>
           <Link className="navbar-link" to="/">Home</Link>
           <Link className="navbar-link" to="/skills">Skills</Link>
           <Link className="navbar-link" to="/projects">Projects</Link>
@@ -48,15 +51,20 @@ const NavBar = () => {
           >
             <img src="/assets/resume.svg" alt="Resume" />
           </a>
+
+          <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
         </div>
 
-        <button
-          onClick={() => setOpen(!open)}
-          className="navbar-button"
-          aria-label="Toggle menu"
-        >
-          {open ? "✕" : "☰"}
-        </button>
+        <div className="navbar-mobile-actions">
+          <ThemeToggle theme={theme} toggleTheme={toggleTheme} className="navbar-mobile-theme-toggle" />
+          <button
+            onClick={() => setOpen(!open)}
+            className="navbar-button"
+            aria-label="Toggle menu"
+          >
+            {open ? "✕" : "☰"}
+          </button>
+        </div>
       </div>
     </nav>
   );

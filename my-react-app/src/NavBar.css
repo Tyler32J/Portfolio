@@ -1,13 +1,14 @@
 .navbar {
-  background-color: #1f1f23;
+  background-color: var(--color-card-bg);
   padding: 1rem 1.5rem;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  border-bottom: 1px solid #27272a;
+  border-bottom: 1px solid var(--color-border);
   width: 100%;
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .navbar-container {
@@ -22,7 +23,7 @@
 .navbar-logo {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #0ea5e9;
+  color: var(--color-accent);
 }
 
 .navbar-menu {
@@ -33,13 +34,13 @@
 
 .navbar-link {
   text-decoration: none;
-  color: #a1a1aa;
+  color: var(--color-text-muted);
   font-size: 0.95rem;
   transition: color 0.3s;
 }
 
 .navbar-link:hover {
-  color: #0ea5e9;
+  color: var(--color-accent);
 }
 
 .navbar-socials {
@@ -54,8 +55,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #27272a;
-  border: 1px solid #3f3f46;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
   border-radius: 0.5rem;
   text-decoration: none;
   transition: all 0.3s;
@@ -63,8 +64,8 @@
 }
 
 .navbar-social-icon:hover {
-  border-color: #0ea5e9;
-  background-color: #2d2d31;
+  border-color: var(--color-accent);
+  background-color: var(--color-card-bg-hover);
 }
 
 .navbar-social-icon img {
@@ -73,21 +74,48 @@
   filter: brightness(0) invert(1);
 }
 
+:root[data-theme="light"] .navbar-social-icon img {
+  filter: none;
+}
+
+.theme-toggle-btn {
+  color: var(--color-text);
+}
+
+.theme-toggle-btn svg {
+  width: 1.3rem;
+  height: 1.3rem;
+}
+
+.navbar-mobile-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.navbar-mobile-theme-toggle {
+  display: none;
+}
+
 .navbar-button {
   display: none;
   background-color: transparent;
   border: none;
-  color: #ffffff;
+  color: var(--color-text);
   font-size: 1.25rem;
   cursor: pointer;
 }
 
 @media (max-width: 768px) {
+  .navbar-mobile-theme-toggle {
+    display: flex;
+  }
+
   .navbar-menu {
     position: absolute;
     top: 4rem;
     right: 1.5rem;
-    background-color: #27272a;
+    background-color: var(--color-card-bg);
     border-radius: 1rem;
     padding: 2rem;
     flex-direction: column;

@@ -25,17 +25,17 @@
 .hero-title {
   font-size: 3.75rem;
   margin-bottom: 2rem;
-  color: #fafafa;
+  color: var(--color-text);
 }
 
 .hero-subtitle {
   font-size: 1.5rem;
-  color: #0ea5e9;
+  color: var(--color-accent);
   margin-bottom: 1.5rem;
 }
 
 .hero-text {
-  color: #a1a1aa;
+  color: var(--color-text-muted);
   line-height: 1.75;
   text-align: justify;
     margin-bottom: 1.5rem;

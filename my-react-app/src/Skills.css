@@ -27,7 +27,8 @@
 
 .skills-section {
   padding: 4rem 1.5rem;
-  background-color: #18181b;
+  background-color: var(--color-bg);
+  transition: background-color 0.25s ease;
 }
 
 .skills-container {
@@ -38,13 +39,13 @@
 .skills-title {
   font-size: 2.25rem;
   font-weight: 300;
-  color: #fafafa;
+  color: var(--color-text);
   margin-bottom: 1rem;
   text-align: center;
 }
 
 .skills-subtitle {
-  color: #a1a1aa;
+  color: var(--color-text-muted);
   font-size: 1rem;
   margin-bottom: 3rem;
   text-align: center;
@@ -63,8 +64,8 @@
   align-items: center;
   gap: 1rem;
   padding: 1.5rem;
-  background-color: #27272a;
-  border: 1px solid #3f3f46;
+  background-color: var(--color-card-bg);
+  border: 1px solid var(--color-border);
   border-radius: 0.75rem;
   transition: all 0.3s;
   cursor: pointer;
@@ -73,8 +74,8 @@
 }
 
 .skill-card:hover {
-  border-color: #0ea5e9;
-  background-color: #2d2d31;
+  border-color: var(--color-accent);
+  background-color: var(--color-card-bg-hover);
 }
 
 .skill-icon {
@@ -91,7 +92,7 @@
 .skill-name {
   font-size: 1rem;
   font-weight: 600;
-  color: #fafafa;
+  color: var(--color-text);
   margin: 0 0 0.25rem 0;
   white-space: nowrap;
   overflow: hidden;
@@ -100,7 +101,7 @@
 
 .skill-description {
   font-size: 0.875rem;
-  color: #a1a1aa;
+  color: var(--color-text-muted);
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
@@ -110,5 +111,5 @@
 .section-header h2 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #fafafa;
+  color: var(--color-text);
 }
