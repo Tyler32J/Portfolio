@@ -98,7 +98,7 @@ const Footer = () => {
                 <path d="M12 21s7-5.7 7-11a7 7 0 1 0-14 0c0 5.3 7 11 7 11z" />
                 <circle cx="12" cy="10" r="2.5" />
               </svg>
-              <span>Grenada, MS</span>
+              <span>Tupelo, MS</span>
             </li>
           </ul>
         </div>
