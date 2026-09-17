@@ -45,11 +45,11 @@ const projects = [
   },
   {
     id: 7,
-    title: "Game Collection Manager (Terminal) ",
+    title: "Game Collection Manager",
     description: "Game Collection Manager is a Java terminal application designed to help users manage their personal video game library. Users can add new games, view their collection, update information, and remove games they no longer own.",
     image: "/projects/game_collection_manager.png",
-    link: "https://github.com/Tyler32J/Game-Collection-Manager",
-    tech: "Java"
+    link: "https://game-collection-manager-production.up.railway.app",
+    tech: "React, Html, CSS"
   }
 ];
 
