@@ -17,13 +17,21 @@ const projects = [
     category: "website"
   },
   {
-    id: 3,
+    id: 2,
     title: "Brad's Honey & Bee Removal",
     description: "Professional bee removal and locally harvested honey business website.",
     image: "/projects/brads_bees.png",
     link: "https://brads-bees-production.up.railway.app/",
     tech: "Django, Html, CSS",
     category: "website"
+  },
+  {
+    id: 3,
+    title: " Veterans of Foreign Wars (VFW)",
+    description: "This is a website for the non-profit government post of Grenada MS. I am making this in hopes of helping the local VFW modernize their approach in gaining member and donations.",
+    image: "/projects/vfw.png",
+    link: "https://github.com/Tyler32J/Dice-Game.git",
+    tech: "React, Html, CSS"
   },
   {
     id: 4,
@@ -46,7 +54,7 @@ const projects = [
    {
     id: 6,
     title: "Game Collection Manager",
-    description: "Game Collection Manager is a Java terminal application designed to help users manage their personal video game library. Users can add new games, view their collection, update information, and remove games they no longer own.",
+    description: "Game Collection Manager is a full-stack web app designed to help users manage their personal video game library. Users can add new games, view their collection, update information, and remove games they no longer own.",
     image: "/projects/game_collection_manager.png",
     link: "https://game-collection-manager-production.up.railway.app",
     tech: "React, Html, CSS"

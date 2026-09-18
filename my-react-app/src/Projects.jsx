@@ -37,16 +37,16 @@ const projects = [
   },
   {
     id: 6,
-    title: "Dice Game (Terminal)",
-    description: "A simple Python terminal dice game where the player rolls a virtual die to get a random number between 1 and 6, with results displayed in the console. Players can roll repeatedly and try to beat their previous rolls.",
-    image: "/projects/dice_rolling_simulator.png",
+    title: " Veterans of Foreign Wars (VFW)",
+    description: "This is a website for the non-profit government post of Grenada MS. I am making this in hopes of helping the local VFW modernize their approach in gaining member and donations.",
+    image: "/projects/vfw.png",
     link: "https://github.com/Tyler32J/Dice-Game.git",
-    tech: "Python"
+    tech: "React, Html, CSS"
   },
   {
     id: 7,
     title: "Game Collection Manager",
-    description: "Game Collection Manager is a Java terminal application designed to help users manage their personal video game library. Users can add new games, view their collection, update information, and remove games they no longer own.",
+    description: "Game Collection Manager is a full-stack web app designed to help users manage their personal video game library. Users can add new games, view their collection, update information, and remove games they no longer own.",
     image: "/projects/game_collection_manager.png",
     link: "https://game-collection-manager-production.up.railway.app",
     tech: "React, Html, CSS"
