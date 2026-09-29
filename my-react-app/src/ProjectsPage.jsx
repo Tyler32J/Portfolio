@@ -30,7 +30,7 @@ const projects = [
     title: " Veterans of Foreign Wars (VFW)",
     description: "This is a website for the non-profit government post of Grenada MS. I am making this in hopes of helping the local VFW modernize their approach in gaining member and donations.",
     image: "/projects/vfw.png",
-    link: "https://github.com/Tyler32J/Dice-Game.git",
+    link: "https://grenadamsvfwwebsite-production.up.railway.app",
     tech: "React, Html, CSS",
     category: "website"
   },
