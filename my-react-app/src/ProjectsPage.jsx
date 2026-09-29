@@ -31,10 +31,29 @@ const projects = [
     description: "This is a website for the non-profit government post of Grenada MS. I am making this in hopes of helping the local VFW modernize their approach in gaining member and donations.",
     image: "/projects/vfw.png",
     link: "https://github.com/Tyler32J/Dice-Game.git",
-    tech: "React, Html, CSS"
+    tech: "React, Html, CSS",
+    category: "website"
   },
   {
     id: 4,
+    title: "TJ-s-Trading-Post",
+    description: " A single-seller resale storefront. Owner-gated listing management, browsable marketplace, and support for sale/trade/wanted listing",
+    image: "/projects/tjs_trading_post.png",
+    link: "https://tj-s-trading-post-production-4894.up.railway.app",
+    tech: "React, Html, CSS",
+    category: "website"
+  },
+  {
+    id: 5,
+    title: "Game Collection Manager",
+    description: "Game Collection Manager is a full-stack web app designed to help users manage their personal video game library. Users can add new games, view their collection, update information, and remove games they no longer own.",
+    image: "/projects/game_collection_manager.png",
+    link: "https://game-collection-manager-production.up.railway.app",
+    tech: "React, Html, CSS",
+    category: "website"
+  },
+  {
+    id: 6,
     title: "Betting on the Races",
     description: "Put your racing knowledge to the test by betting on your favorite drivers. Pick who you think will win and place your bet,",
     image: "/projects/betting_on_the_races.png",
@@ -43,7 +62,7 @@ const projects = [
     category: "website"
   },
   {
-    id: 5,
+    id: 7,
     title: "The Goat",
     description: "Master Chief is more than a warrior; he is a symbol of hope and courage. In the face of impossible odds, he stands unbroken, fighting not for himself, but for the survival of humanity.",
     image: "/projects/halo_background.png",
@@ -51,16 +70,8 @@ const projects = [
     tech: "Html & CSS",
     category: "website"
   },
-   {
-    id: 6,
-    title: "Game Collection Manager",
-    description: "Game Collection Manager is a full-stack web app designed to help users manage their personal video game library. Users can add new games, view their collection, update information, and remove games they no longer own.",
-    image: "/projects/game_collection_manager.png",
-    link: "https://game-collection-manager-production.up.railway.app",
-    tech: "React, Html, CSS"
-  },
   {
-    id: 7,
+    id: 8,
     title: "Dice Game (Terminal)",
     description: "A simple Python terminal dice game where the player rolls a virtual die to get a random number between 1 and 6, with results displayed in the console. Players can roll repeatedly and try to beat their previous rolls.",
     image: "/projects/dice_rolling_simulator.png",
@@ -69,7 +80,7 @@ const projects = [
     category: "game"
   },
   {
-    id: 8,
+    id: 9,
     title: "Game Collection Manager (Terminal) ",
     description: "Game Collection Manager is a Java terminal application designed to help users manage their personal video game library. Users can add new games, view their collection, update information, and remove games they no longer own.",
     image: "/projects/game_collection_manager_terminal.png",

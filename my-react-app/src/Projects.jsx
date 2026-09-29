@@ -12,7 +12,7 @@ const projects = [
     tech: "Django, Html, CSS"
   },
   {
-    id: 3,
+    id: 2,
     title: "Brad's Honey & Bee Removal",
     description: "Professional bee removal and locally harvested honey business website.",
     image: "/projects/brads_bees.png",
@@ -20,23 +20,7 @@ const projects = [
     tech: "Django, Html, CSS"
   },
   {
-    id: 4,
-    title: "Betting on the Races",
-    description: "Put your racing knowledge to the test by betting on your favorite drivers. Pick who you think will win and place your bet,",
-    image: "/projects/betting_on_the_races.png",
-    link: "https://betting-on-the-races-react-production.up.railway.app",
-    tech: "React, Html, CSS"
-  },
-  {
-    id: 5,
-    title: "The Goat",
-    description: "Master Chief is more than a warrior; he is a symbol of hope and courage. In the face of impossible odds, he stands unbroken, fighting not for himself, but for the survival of humanity.",
-    image: "/projects/halo_background.png",
-    link: "https://goat-project-production.up.railway.app",
-    tech: "Html & CSS"
-  },
-  {
-    id: 6,
+    id: 3,
     title: " Veterans of Foreign Wars (VFW)",
     description: "This is a website for the non-profit government post of Grenada MS. I am making this in hopes of helping the local VFW modernize their approach in gaining member and donations.",
     image: "/projects/vfw.png",
@@ -44,13 +28,30 @@ const projects = [
     tech: "React, Html, CSS"
   },
   {
-    id: 7,
+    id: 4,
+    title: "TJ-s-Trading-Post",
+    description: " A single-seller resale storefront. Owner-gated listing management, browsable marketplace, and support for sale/trade/wanted listing",
+    image: "/projects/tjs_trading_post.png",
+    link: "https://tj-s-trading-post-production-4894.up.railway.app",
+    tech: "React, Html, CSS",
+    category: "website"
+  },
+  {
+    id: 5,
     title: "Game Collection Manager",
     description: "Game Collection Manager is a full-stack web app designed to help users manage their personal video game library. Users can add new games, view their collection, update information, and remove games they no longer own.",
     image: "/projects/game_collection_manager.png",
     link: "https://game-collection-manager-production.up.railway.app",
     tech: "React, Html, CSS"
-  }
+  },
+  {
+    id: 6,
+    title: "Betting on the Races",
+    description: "Put your racing knowledge to the test by betting on your favorite drivers. Pick who you think will win and place your bet,",
+    image: "/projects/betting_on_the_races.png",
+    link: "https://betting-on-the-races-react-production.up.railway.app",
+    tech: "React, Html, CSS"
+  },
 ];
 
 const Projects = () => {

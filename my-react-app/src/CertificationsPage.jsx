@@ -59,7 +59,7 @@ const certifications = [
     description:
       "Completed with a strong foundation in general education and essential academic skills.",
     certImg:
-      "/certifications/coming_soon.png",
+      "/certifications/high_school_diploma.png",
     category: "education",
   },
    {
