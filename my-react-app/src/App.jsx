@@ -8,6 +8,7 @@ import Certifications from './Certifications'
 import Projects from './Projects'
 import Contact from './Contact'
 import Footer from './Footer'
+import BackToTop from './BackToTop'
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Projects/>
       <Contact/>
       <Footer/>
+      <BackToTop/>
     </div>
   )
 }

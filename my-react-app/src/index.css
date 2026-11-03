@@ -7,12 +7,15 @@
   --color-border: #3f3f46;
   --color-text: #fafafa;
   --color-text-muted: #a1a1aa;
-  --color-accent: #0ea5e9;
-  --color-accent-bright: #38bdf8;
-  --color-accent-glow: #7dd3fc;
+  --color-accent: #14b8a6;
+  --color-accent-bright: #2dd4bf;
+  --color-accent-glow: #5eead4;
   --color-accent-contrast: #ffffff;
   --color-rail-bg: rgb(24, 24, 32);
   --color-overlay: rgba(24, 24, 27, 0.5);
+  --font-display: "Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  /* Faint circuit-board traces, used behind the navbar and footer */
+  --circuit-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160' fill='none' stroke='%2314b8a6' stroke-opacity='0.2' stroke-width='1.5'%3E%3Cpath d='M0 30h40l15 15h45l10-10h50M20 0v20l10 10M80 45v35l-15 15H0M160 90h-40l-20 20v50M110 35V0M130 160v-30l15-15h15M40 160v-25l20-20h40'/%3E%3Cg fill='%2314b8a6' fill-opacity='0.2' stroke='none'%3E%3Ccircle cx='30' cy='30' r='3'/%3E%3Ccircle cx='110' cy='35' r='3'/%3E%3Ccircle cx='80' cy='80' r='3'/%3E%3Ccircle cx='120' cy='90' r='3'/%3E%3Ccircle cx='100' cy='110' r='3'/%3E%3Ccircle cx='145' cy='115' r='3'/%3E%3Ccircle cx='60' cy='115' r='3'/%3E%3C/g%3E%3C/svg%3E");
 
   color-scheme: dark;
 }
@@ -24,9 +27,9 @@
   --color-border: #e2e8f0;
   --color-text: #18181b;
   --color-text-muted: #52525b;
-  --color-accent: #0ea5e9;
-  --color-accent-bright: #0284c7;
-  --color-accent-glow: #38bdf8;
+  --color-accent: #14b8a6;
+  --color-accent-bright: #0d9488;
+  --color-accent-glow: #2dd4bf;
   --color-accent-contrast: #ffffff;
   --color-rail-bg: #eef2f7;
   --color-overlay: rgba(226, 232, 240, 0.5);
@@ -38,8 +41,416 @@ html {
   scroll-behavior: smooth;
 }
 
+.hero-title,
+.section-header h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  letter-spacing: -0.025em;
+}
+
+/* For half a second after switching themes, colors fade instead of snapping (added by useTheme.js) */
+.theme-switching,
+.theme-switching *,
+.theme-switching *::before,
+.theme-switching *::after {
+  transition: background-color 0.45s ease, color 0.45s ease, border-color 0.45s ease,
+    fill 0.45s ease, stroke 0.45s ease, box-shadow 0.45s ease !important;
+}
+
+/* ...except the toggle icons, which keep their spin */
+.theme-switching .theme-toggle-btn .theme-icon {
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s !important;
+}
+
+/* Teal cursor (Cursor.jsx): only turned on for mouse users */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.has-custom-cursor input,
+.has-custom-cursor textarea,
+.has-custom-cursor [contenteditable="true"] {
+  cursor: text !important;
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
+  background-color: var(--color-accent-bright);
+  box-shadow: 0 0 8px var(--color-accent-bright);
+}
+
+.cursor-ring {
+  width: 32px;
+  height: 32px;
+  margin: -16px 0 0 -16px;
+  border: 1.5px solid rgba(20, 184, 166, 0.75);
+  transition: opacity 0.2s, width 0.25s, height 0.25s, margin 0.25s, background-color 0.25s;
+}
+
+.cursor-visible .cursor-dot,
+.cursor-visible .cursor-ring {
+  opacity: 1;
+}
+
+.cursor-over-text .cursor-dot,
+.cursor-over-text .cursor-ring {
+  opacity: 0;
+}
+
+.cursor-ring.is-hot {
+  width: 54px;
+  height: 54px;
+  margin: -27px 0 0 -27px;
+  background-color: rgba(20, 184, 166, 0.12);
+}
+
+.cursor-ring.is-pressed {
+  width: 24px;
+  height: 24px;
+  margin: -12px 0 0 -12px;
+}
+
+/* Points of light traveling along the circuit pattern (CircuitSignals.jsx), behind the navbar and footer content.
+   The parent needs to be a stacking context (isolation: isolate or a z-index) so z-index: -1 stays above its background. */
+.circuit-signals {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.circuit-signal {
+  fill: var(--color-accent-bright);
+  filter: drop-shadow(0 0 4px var(--color-accent-bright)) drop-shadow(0 0 8px var(--color-accent));
+}
+
+/* Certificate popup: header and footer match the navbar and footer (circuit pattern, signals, glowing edge).
+   ".modal-content" in front wins over the certification styles, which load later. */
+.modal-content {
+  overflow: hidden;
+}
+
+.modal-content .modal-header,
+.modal-content .modal-footer {
+  position: relative;
+  isolation: isolate;
+  background-color: var(--color-card-bg);
+  background-image: var(--circuit-pattern);
+  background-size: 160px 160px;
+  border-color: transparent;
+}
+
+.modal-content .modal-header {
+  text-align: left;
+}
+
+/* Glowing line where the header meets the certificate, and where the footer starts */
+.modal-content .modal-header::after,
+.modal-content .modal-footer::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-bright), transparent);
+}
+
+.modal-content .modal-header::after {
+  bottom: 0;
+}
+
+.modal-content .modal-footer::before {
+  top: 0;
+}
+
+/* Popup close controls: the ✕ in every popup turns teal on hover, and the certificate popup's Close button is always teal */
+.modal-content .close-btn {
+  transition: color 0.2s, transform 0.2s;
+}
+
+.modal-content .close-btn:hover {
+  color: var(--color-accent-bright);
+  transform: rotate(90deg);
+}
+
+.modal-content .close-btn:focus-visible {
+  outline: 2px solid var(--color-accent-glow);
+  outline-offset: 2px;
+  border-radius: 0.3rem;
+}
+
+.modal-content .btn-close {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  transition: background-color 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.modal-content .btn-close:hover {
+  background: #0d9488;
+  border-color: #0d9488;
+  transform: translateY(-2px);
+}
+
+.modal-content .btn-close:focus-visible {
+  outline: 2px solid var(--color-accent-glow);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-content .close-btn:hover,
+  .modal-content .btn-close:hover {
+    transform: none;
+  }
+}
+
+/* Résumé popup (ResumePreview.jsx): reuses the certificate popup, with a PDF viewer and two buttons */
+.resume-modal .modal-content {
+  max-width: 860px;
+}
+
+.resume-frame {
+  display: block;
+  width: 100%;
+  height: min(72vh, 900px);
+  border: 0;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.resume-modal .modal-footer {
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+/* Project popup (ProjectDetails.jsx) */
+.project-modal .modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  text-align: left;
+}
+
+.project-modal-img {
+  display: block;
+  width: 100%;
+  max-height: 60vh;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 0.5rem;
+}
+
+.project-modal-text {
+  margin: 0;
+  color: var(--color-text);
+  line-height: 1.7;
+}
+
+.project-modal-note {
+  margin-right: auto;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  text-align: left;
+}
+
+.project-modal .modal-footer {
+  gap: 1rem;
+}
+
+.resume-open-link,
+.resume-download,
+.modal-action {
+  padding: 0.75rem 1.3rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.resume-open-link {
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent-bright);
+}
+
+.resume-open-link:hover {
+  background-color: var(--color-accent);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+.modal-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.modal-action-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  transition: transform 0.2s;
+}
+
+.modal-action:hover .modal-action-icon {
+  transform: translate(2px, -2px);
+}
+
+.resume-download,
+.modal-action {
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  box-shadow: 0 6px 18px -8px rgba(20, 184, 166, 0.8);
+}
+
+.resume-open-link:focus-visible,
+.resume-download:focus-visible,
+.modal-action:focus-visible {
+  outline: 2px solid var(--color-accent-glow);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .resume-open-link:hover {
+    transform: none;
+  }
+}
+
+/* Main buttons: teal gradient, lift on hover, and a streak of light that sweeps across */
+.btn-shine {
+  position: relative;
+  overflow: hidden;
+  background-image: linear-gradient(135deg, var(--color-accent-bright), var(--color-accent) 60%);
+}
+
+.btn-shine::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -60%;
+  width: 40%;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.btn-shine:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px -12px rgba(20, 184, 166, 0.95);
+}
+
+.btn-shine:hover::after {
+  left: 120%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn-shine::after {
+    display: none;
+  }
+
+  .btn-shine:hover {
+    transform: none;
+  }
+}
+
+/* Teal line that draws under each section heading as it scrolls into view (useHeadingLines.js) */
+.section-header h2 {
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+.section-header h2::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 3.5rem;
+  height: 3px;
+  border-radius: 3px;
+  background: linear-gradient(90deg, var(--color-accent), var(--color-accent-bright));
+  transform: translateX(-50%) scaleX(0);
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.section-header h2.line-drawn::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-header h2::after {
+    transition: none;
+  }
+}
+
+.page-transition {
+  animation: page-enter 0.38s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Opacity only: a transform here would break the fixed navbar mid-animation */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-transition {
+    animation: none;
+  }
+}
+
 body {
   background-color: var(--color-bg);
   color: var(--color-text);
   transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+/* Faint topographic map lines behind the whole page. Fixed, so they stay put while the content scrolls over them. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    repeating-radial-gradient(
+      ellipse at 15% 30%,
+      transparent 0 34px,
+      color-mix(in srgb, var(--color-accent) 9%, transparent) 35px 36px
+    ),
+    repeating-radial-gradient(
+      ellipse at 85% 85%,
+      transparent 0 42px,
+      color-mix(in srgb, var(--color-accent) 7%, transparent) 43px 44px
+    );
+  -webkit-mask-image: radial-gradient(ellipse at 50% 50%, #000 35%, transparent 95%);
+  mask-image: radial-gradient(ellipse at 50% 50%, #000 35%, transparent 95%);
+}
+
+/* Outline buttons stay still on hover for reduced motion (:root wins over the component styles that load later) */
+@media (prefers-reduced-motion: reduce) {
+  :root .see-more-btn:hover,
+  :root .back-btn:hover,
+  :root .back-button:hover,
+  :root .view-project-btn:hover {
+    transform: none;
+  }
 }

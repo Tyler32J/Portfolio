@@ -4,6 +4,19 @@ import Footer from "./Footer";
 import BackButton from "./BackButton";
 import useInView from "./useInView";
 import "./CertificationsPage.css";
+import CircuitSignals from "./CircuitSignals";
+
+// Signals for the certificate popup's header and footer, which share the navbar and footer's circuit look
+const modalHeaderSignals = [
+  { trace: "top", x: 0.1, row: 0, dur: 4.5, delay: 0 },
+  { trace: "top", x: 0.55, row: 0, dur: 5.5, delay: -2 },
+  { trace: "top", x: 0.85, row: 0, dur: 5, delay: -3.5 },
+];
+const modalFooterSignals = [
+  { trace: "top", x: 0.25, row: 0, dur: 5, delay: -1 },
+  { trace: "top", x: 0.7, row: 0, dur: 4.5, delay: -2.8 },
+];
+
 
 const certifications = [
   {
@@ -17,7 +30,7 @@ const certifications = [
     description:
       "Comprehensive full-stack web development program covering React, Python, Django, and modern web technologies.",
     certImg:
-      "/certifications/full_stack_development_certification.png",
+      "/certifications/full_stack_development_certification.webp",
     category: "tech",
   },
   {
@@ -31,7 +44,7 @@ const certifications = [
     description:
       "Associate degree of Art emphasizing essential general‑education studies and versatile skills for academic and professional growth.",
     certImg:
-      "/certifications/associate_of_arts.png",
+      "/certifications/associate_of_arts.webp",
     category: "education",
   },
   {
@@ -45,7 +58,7 @@ const certifications = [
     description:
       " Gained hands‑on experience in Arc, MIG, TIG, Stick, and flux‑core welding, along with pipe welding and plasma cutting.",
     certImg:
-      "/certifications/welding_cutting_technical_certificate.png",
+      "/certifications/welding_cutting_technical_certificate.webp",
     category: "trade",
   },
   {
@@ -59,7 +72,7 @@ const certifications = [
     description:
       "Completed with a strong foundation in general education and essential academic skills.",
     certImg:
-      "/certifications/high_school_diploma.png",
+      "/certifications/high_school_diploma.webp",
     category: "education",
   },
    {
@@ -73,7 +86,7 @@ const certifications = [
     description:
       "Yale Corporation's Operator Training Program",
     certImg:
-      "/certifications/forklife_certification.png",
+      "/certifications/forklife_certification.webp",
     category: "trade",
   },
   {
@@ -87,7 +100,7 @@ const certifications = [
     description:
       "Claude 101 teaches the basics of using the Claude AI",
     certImg:
-      "/certifications/claude_101.png",
+      "/certifications/claude_101.webp",
     category: "tech",
   },
   {
@@ -101,7 +114,7 @@ const certifications = [
     description:
       "Claude Code 101 teaches the basics of using Claude for coding tasks like debugging, generating code, and understanding programming concepts.",
     certImg:
-      "/certifications/claude_code_101.png",
+      "/certifications/claude_code_101.webp",
     category: "tech",
   },
   {
@@ -115,7 +128,7 @@ const certifications = [
     description:
       "Claude Code in Action shows how to use Claude AI to solve real coding problems through hands‑on examples and practical workflows.",
     certImg:
-      "/certifications/claude_code_in_action.png",
+      "/certifications/claude_code_in_action.webp",
     category: "tech",
   },
    {
@@ -129,7 +142,7 @@ const certifications = [
     description:
       "Claude Platform 101 introduces the core tools and features of the Claude AI platform and teaches how to use them effectively.",
     certImg:
-      "/certifications/claude_platform_101.png",
+      "/certifications/claude_platform_101.webp",
     category: "tech",
   },
   {
@@ -143,7 +156,7 @@ const certifications = [
     description:
       "Introduction to Claude Cowork teaches how to collaborate with Claude AI on tasks like writing, planning, and problem‑solving in a shared workspace.",
     certImg:
-      "/certifications/introduction_to_claude_cowork.png",
+      "/certifications/introduction_to_claude_cowork.webp",
     category: "tech",
   },
   {
@@ -157,7 +170,7 @@ const certifications = [
     description:
       "AI Fluency for Educators teaches teachers how to confidently use, understand, and integrate AI tools into instruction, planning, and student support.",
     certImg:
-      "/certifications/ai_fluency_for_educators.png",
+      "/certifications/ai_fluency_for_educators.webp",
     category: "tech",
   },
   {
@@ -171,7 +184,7 @@ const certifications = [
     description:
       "AI Fluency for Students teaches learners how to understand, use, and communicate effectively with modern AI tools in academic and real‑world tasks.",
     certImg:
-      "/certifications/ai_fluency_for_students.png",
+      "/certifications/ai_fluency_for_students.webp",
     category: "tech",
   },
 ];
@@ -311,6 +324,7 @@ export default function CertificationsPage() {
             >
               <div className="modal-content">
                 <div className="modal-header">
+                  <CircuitSignals signals={modalHeaderSignals} />
                   <div>
                     <h3 className="modal-title">{cert.title}</h3>
                     <p className="modal-subtitle">
@@ -341,6 +355,7 @@ export default function CertificationsPage() {
                   </div>
                 </div>
                 <div className="modal-footer">
+                  <CircuitSignals signals={modalFooterSignals} />
                   <button
                     className="btn btn-close"
                     onClick={() => setOpenModal(null)}

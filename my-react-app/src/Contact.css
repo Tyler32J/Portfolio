@@ -1,6 +1,6 @@
 .contact-section {
   padding: 4rem 1.5rem;
-  background-color: var(--color-bg);
+  background-color: transparent;
   min-height: 100vh;
   display: flex;
   align-items: center;
@@ -149,12 +149,12 @@
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
   margin-top: 0.5rem;
 }
 
 .submit-button:hover {
-  background-color: #0284c7;
+  background-color: #0d9488;
 }
 
 .success-container {
@@ -204,6 +204,7 @@
 .back-button:hover {
   background-color: var(--color-accent);
   color: #ffffff;
+  transform: translateY(-2px);
 }
 
 .social-img {
@@ -244,4 +245,299 @@
   font-size: 2.5rem;
   margin-bottom: 1rem;
   color: var(--color-text);
+}
+
+/* Two-column layout: details on the left, form on the right */
+.contact-container-centered {
+  width: 100%;
+  max-width: 64rem;
+}
+
+.contact-layout {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 3rem;
+  align-items: start;
+  text-align: left;
+}
+
+.contact-layout > * {
+  min-width: 0;
+}
+
+.contact-info-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding-top: 0.5rem;
+}
+
+.contact-info-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text);
+  text-wrap: balance;
+}
+
+.contact-info-text {
+  margin: 0;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+}
+
+.contact-details {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-details li {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  color: var(--color-text);
+}
+
+.contact-details li > span:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.contact-details small {
+  display: block;
+  margin-bottom: 0.1rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.contact-details a {
+  color: var(--color-text);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.contact-details a:hover {
+  color: var(--color-accent);
+}
+
+.contact-detail-icon {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.6rem;
+  display: grid;
+  place-items: center;
+  background: rgba(20, 184, 166, 0.12);
+  color: var(--color-accent-bright);
+}
+
+.contact-detail-icon svg {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.contact-info-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+}
+
+.contact-social-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.5rem;
+  color: var(--color-text);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+.contact-social-link:hover {
+  border-color: var(--color-accent);
+  background-color: var(--color-card-bg-hover);
+}
+
+.contact-social-link img {
+  width: 1.1rem;
+  height: 1.1rem;
+  filter: brightness(0) invert(1);
+}
+
+:root[data-theme="light"] .contact-social-link img {
+  filter: none;
+}
+
+@media (max-width: 768px) {
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* Topic buttons */
+.topic-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.topic-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.topic-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.topic-chip {
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-text-muted);
+  font-family: inherit;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s, color 0.2s;
+}
+
+.topic-chip:hover {
+  border-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.topic-chip[aria-pressed="true"] {
+  background: rgba(20, 184, 166, 0.15);
+  border-color: var(--color-accent);
+  color: var(--color-text);
+}
+
+.topic-chip:focus-visible {
+  outline: 2px solid var(--color-accent-glow);
+  outline-offset: 2px;
+}
+
+/* Field icons and focus glow */
+.input-wrap {
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.95rem;
+  top: 0.9rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--color-text-muted);
+  pointer-events: none;
+  transition: color 0.2s;
+}
+
+.input-wrap input,
+.input-wrap textarea {
+  padding-left: 2.75rem;
+  transition: border-color 0.3s, box-shadow 0.2s, background-color 0.25s ease, color 0.25s ease;
+}
+
+.input-wrap input:focus,
+.input-wrap textarea:focus {
+  box-shadow: 0 0 0 3px rgba(20, 184, 166, 0.25);
+}
+
+.input-wrap:focus-within .input-icon {
+  color: var(--color-accent-bright);
+}
+
+/* Send button with arrow */
+.submit-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  box-shadow: 0 6px 18px -8px rgba(20, 184, 166, 0.8);
+}
+
+.submit-button svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  transition: transform 0.2s;
+}
+
+.submit-button:hover svg {
+  transform: translateX(4px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .submit-button svg {
+    transition: none;
+  }
+}
+
+/* Sending state and error message (ContactForm.jsx) */
+.submit-button:disabled::after {
+  display: none;
+}
+
+.submit-button:disabled {
+  cursor: progress;
+  opacity: 0.85;
+  transform: none;
+}
+
+.submit-spinner {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  border-top-color: #fff;
+  animation: submit-spin 0.7s linear infinite;
+}
+
+@keyframes submit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.form-error {
+  margin: 0;
+  padding: 0.85rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(248, 113, 113, 0.4);
+  background: rgba(248, 113, 113, 0.1);
+  color: #f87171;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.form-error a {
+  color: inherit;
+  font-weight: 600;
+}
+
+:root[data-theme="light"] .form-error {
+  color: #b91c1c;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .submit-spinner {
+    animation-duration: 1.5s;
+  }
 }

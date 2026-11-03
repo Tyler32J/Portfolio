@@ -2,6 +2,19 @@ import React, { useState, useEffect } from "react";
 import "./Certifications.css";
 import SeeMoreButton from "./SeeMoreButton";
 import useInView from "./useInView";
+import CircuitSignals from "./CircuitSignals";
+
+// Signals for the certificate popup's header and footer, which share the navbar and footer's circuit look
+const modalHeaderSignals = [
+  { trace: "top", x: 0.1, row: 0, dur: 4.5, delay: 0 },
+  { trace: "top", x: 0.55, row: 0, dur: 5.5, delay: -2 },
+  { trace: "top", x: 0.85, row: 0, dur: 5, delay: -3.5 },
+];
+const modalFooterSignals = [
+  { trace: "top", x: 0.25, row: 0, dur: 5, delay: -1 },
+  { trace: "top", x: 0.7, row: 0, dur: 4.5, delay: -2.8 },
+];
+
 
 
 const certifications = [
@@ -17,7 +30,7 @@ const certifications = [
     description:
       "Comprehensive full-stack web development program covering React, Python, Django, and modern web technologies.",
     certImg:
-      "/certifications/full_stack_development_certification.png",
+      "/certifications/full_stack_development_certification.webp",
   },
   {
     id: "cert2",
@@ -30,7 +43,7 @@ const certifications = [
     description:
       "Associate degree of Arts emphasizing essential general‑education studies and versatile skills for academic and professional growth.",
     certImg:
-     "/certifications/associate_of_arts.png",
+     "/certifications/associate_of_arts.webp",
   },
   {
     id: "cert3",
@@ -43,7 +56,7 @@ const certifications = [
     description:
       " Gained hands‑on experience in Arc, MIG, TIG, Stick, and flux‑core welding, along with pipe welding and plasma cutting.",
     certImg:
-      "/certifications/welding_cutting_technical_certificate.png",
+      "/certifications/welding_cutting_technical_certificate.webp",
   },
 ];
 
@@ -147,6 +160,7 @@ export default function Certifications() {
           >
             <div className="modal-content">
               <div className="modal-header">
+                <CircuitSignals signals={modalHeaderSignals} />
                 <div>
                   <h3 className="modal-title">{cert.title}</h3>
                   <p className="modal-subtitle">
@@ -177,6 +191,7 @@ export default function Certifications() {
                 </div>
               </div>
               <div className="modal-footer">
+                <CircuitSignals signals={modalFooterSignals} />
                 <button
                   className="btn btn-close"
                   onClick={() => setOpenModal(null)}

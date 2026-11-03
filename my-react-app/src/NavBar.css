@@ -1,5 +1,7 @@
 .navbar {
   background-color: var(--color-card-bg);
+  background-image: var(--circuit-pattern);
+  background-size: 160px 160px;
   padding: 1rem 1.5rem;
   position: fixed;
   top: 0;
@@ -21,15 +23,114 @@
 }
 
 .navbar-logo {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.navbar-logo:focus-visible {
+  outline: 2px solid var(--color-accent-glow);
+  outline-offset: 4px;
+  border-radius: 0.6rem;
+}
+
+.navbar-logo-mark {
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.6rem;
+  display: grid;
+  place-items: center;
+  background-color: var(--color-accent);
+  color: var(--color-accent-contrast);
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 800;
+  box-shadow: 0 6px 16px -6px rgba(20, 184, 166, 0.8);
+  transition: transform 0.2s;
+}
+
+.navbar-logo:hover .navbar-logo-mark {
+  transform: translateY(-2px);
+}
+
+.navbar-logo-text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.navbar-logo-name {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+.navbar-logo-tagline {
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+@media (max-width: 360px) {
+  .navbar-logo-tagline {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-logo-mark {
+    transition: none;
+  }
 }
 
 .navbar-menu {
+  position: relative;
   display: flex;
   gap: 2rem;
   align-items: center;
+}
+
+/* Teal pill that glides behind the hovered link (positioned in NavBar.jsx) */
+.navbar-pill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+  border-radius: 999px;
+  background: rgba(20, 184, 166, 0.14);
+  border: 1px solid rgba(20, 184, 166, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), width 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.3s ease, opacity 0.2s ease;
+}
+
+.navbar-pill.is-visible {
+  opacity: 1;
+}
+
+.navbar-menu .navbar-link {
+  z-index: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar-pill {
+    transition: opacity 0.2s ease;
+  }
+}
+
+/* Phones use the dropdown menu, where a sliding pill would only flash on tap */
+@media (max-width: 768px) {
+  .navbar-pill {
+    display: none;
+  }
 }
 
 .navbar-link {
@@ -41,6 +142,34 @@
 
 .navbar-link:hover {
   color: var(--color-accent);
+}
+
+.navbar-link {
+  position: relative;
+}
+
+.navbar-link.active {
+  color: var(--color-text);
+}
+
+.navbar-link.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -6px;
+  height: 2px;
+  border-radius: 2px;
+  background: var(--color-accent);
+}
+
+.navbar-progress {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  height: 2px;
+  background: var(--color-accent-bright);
+  pointer-events: none;
 }
 
 .navbar-socials {
@@ -78,13 +207,46 @@
   filter: none;
 }
 
+.command-search-btn {
+  color: var(--color-text);
+}
+
+.command-search-btn svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
 .theme-toggle-btn {
+  position: relative;
+  overflow: hidden;
   color: var(--color-text);
 }
 
 .theme-toggle-btn svg {
   width: 1.3rem;
   height: 1.3rem;
+}
+
+/* The sun shows in dark mode and the moon in light mode; switching spins one out as the other spins in */
+.theme-toggle-btn .theme-icon {
+  position: absolute;
+  transition: transform 0.55s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s;
+}
+
+.theme-toggle-btn.is-dark .theme-icon-moon {
+  opacity: 0;
+  transform: rotate(90deg) scale(0.4);
+}
+
+.theme-toggle-btn.is-light .theme-icon-sun {
+  opacity: 0;
+  transform: rotate(-90deg) scale(0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle-btn .theme-icon {
+    transition: none;
+  }
 }
 
 .navbar-mobile-actions {
@@ -97,13 +259,25 @@
   display: none;
 }
 
+/* Phone menu button: 44px square so it's easy to tap */
 .navbar-button {
   display: none;
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border-radius: 0.5rem;
   background-color: transparent;
   border: none;
   color: var(--color-text);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  line-height: 2.75rem;
+  text-align: center;
   cursor: pointer;
+}
+
+.navbar-button:focus-visible {
+  outline: 2px solid var(--color-accent-glow);
+  outline-offset: 2px;
 }
 
 @media (max-width: 768px) {

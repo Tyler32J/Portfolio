@@ -28,10 +28,45 @@
   color: var(--color-text);
 }
 
+.hero-title-last {
+  color: var(--color-accent-bright);
+}
+
+/* Role line styled like a terminal prompt: "> I'm a Full Stack Developer█" */
 .hero-subtitle {
-  font-size: 1.5rem;
-  color: var(--color-accent);
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  font-size: 1.35rem;
+  font-weight: 500;
+  color: var(--color-text);
   margin-bottom: 1.5rem;
+}
+
+.hero-prompt,
+.hero-typed {
+  color: var(--color-accent-bright);
+}
+
+.hero-typed::after {
+  content: "";
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 3px;
+  vertical-align: -0.15em;
+  background: var(--color-accent-bright);
+  animation: hero-cursor-blink 1s steps(1) infinite;
+}
+
+@keyframes hero-cursor-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-typed::after {
+    animation: none;
+  }
 }
 
 .hero-text {
@@ -39,6 +74,13 @@
   line-height: 1.75;
   text-align: justify;
     margin-bottom: 1.5rem;
+}
+
+/* Justified text leaves big gaps between words on narrow screens, so phones get left-aligned text */
+@media (max-width: 767px) {
+  .hero-text {
+    text-align: left;
+  }
 }
 
 .hero-image-container {
@@ -49,24 +91,63 @@
   margin-top: 8rem;
 }
 
-.hero-image-container::before {
-  content: '';
-  position: absolute;
-  inset: -3rem;
-  background: radial-gradient(
-    circle at 50% 50%,
-    rgba(14, 165, 233, 0.55) 0%,
-    rgba(14, 165, 233, 0.25) 40%,
-    rgba(14, 165, 233, 0) 70%
+/* Blue gradient frame around the photo */
+.hero-image-frame {
+  position: relative;
+  max-width: 100%;
+  padding: 4px;
+  border-radius: 1.6rem;
+  background: conic-gradient(
+    from 210deg,
+    var(--color-accent),
+    var(--color-accent-bright),
+    rgba(255, 255, 255, 0.25),
+    var(--color-accent)
   );
-  filter: blur(40px);
-  z-index: 0;
+  box-shadow: 0 24px 60px -20px rgba(20, 184, 166, 0.7);
+}
+
+/* Corner brackets just outside the frame, like a camera viewfinder */
+.hero-corner {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  border: 2px solid var(--color-accent-bright);
+  pointer-events: none;
+}
+
+.hero-corner-tl {
+  top: -1rem;
+  left: -1rem;
+  border-right: none;
+  border-bottom: none;
+}
+
+.hero-corner-tr {
+  top: -1rem;
+  right: -1rem;
+  border-left: none;
+  border-bottom: none;
+}
+
+.hero-corner-bl {
+  bottom: -1rem;
+  left: -1rem;
+  border-right: none;
+  border-top: none;
+}
+
+.hero-corner-br {
+  bottom: -1rem;
+  right: -1rem;
+  border-left: none;
+  border-top: none;
 }
 
 .hero-image {
   position: relative;
   z-index: 1;
-  border-radius: 0.5rem;
+  border-radius: 1.35rem;
   width: auto;
   max-width: 100%;
   height: 34rem;

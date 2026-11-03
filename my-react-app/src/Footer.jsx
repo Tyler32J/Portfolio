@@ -1,44 +1,54 @@
 import { Link } from "react-router-dom";
+import CircuitSignals from "./CircuitSignals";
+import { RESUME_URL, openResume } from "./resume";
 import './Footer.css';
+
+const footerSignals = [
+  { trace: "top", x: 0.08, row: 0, dur: 5, delay: 0 },
+  { trace: "left", x: 0.3, row: 1, dur: 6, delay: -2 },
+  { trace: "right", x: 0.52, row: 0, dur: 5.5, delay: -1 },
+  { trace: "bottom", x: 0.74, row: 2, dur: 4.5, delay: -3 },
+  { trace: "top", x: 0.92, row: 1, dur: 6.5, delay: -4 },
+  { trace: "right", x: 0.2, row: 2, dur: 5, delay: -2.5 },
+];
 
 const Footer = () => {
   return (
     <footer className="footer">
+      <CircuitSignals signals={footerSignals} />
+      <div className="footer-cta">
+        <h2 className="footer-cta-title">
+          Have a project in mind? <span>Let's talk.</span>
+        </h2>
+        <Link to="/contact" className="footer-cta-button btn-shine">Get in touch</Link>
+      </div>
+
       <div className="footer-container">
         <div className="footer-column">
           <h3 className="footer-name">Tyler Farrell</h3>
           <p className="footer-tagline">
-            "Full-Stack Developer | React | JavaScript | Always learning"
+            Full stack developer and IT Technician. Always learning.
           </p>
           <div className="footer-socials">
             <a
-              href="https://github.com/Tyler32J"
-              className="footer-social-icon"
-              target="_blank"
-              rel="noreferrer"
-              aria-label="GitHub"
-            >
-              <img src="/assets/github.svg" alt="GitHub" className="social-img" />
-            </a>
-
-            <a
               href="https://www.linkedin.com/in/tyler-farrell-9233a8329/"
-              className="footer-social-icon"
+              className="footer-social-button"
               target="_blank"
               rel="noreferrer"
-              aria-label="LinkedIn"
             >
-              <img src="/assets/linkedin.svg" alt="LinkedIn" className="social-img" />
+              <img src="/assets/linkedin.svg" alt="" className="social-img" />
+              LinkedIn
             </a>
 
             <a
-              href="/assets/resume.pdf"
-              className="footer-social-icon"
+              href={RESUME_URL}
+              className="footer-social-button"
               target="_blank"
               rel="noreferrer"
-              aria-label="Resume"
+              onClick={openResume}
             >
-              <img src="/assets/resume.svg" alt="Resume" className="social-img" />
+              <img src="/assets/resume.svg" alt="" className="social-img" />
+              Résumé
             </a>
           </div>
         </div>

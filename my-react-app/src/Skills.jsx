@@ -36,7 +36,7 @@ const skills = [
   { imgSrc: '/skills/javascript.svg', label: 'JavaScript', desc: 'Programming Language', link: "https://www.w3schools.com/js/js_intro.asp" },
   { imgSrc: '/skills/html.svg', label: 'HTML', desc: 'Markup Language', link: "https://www.w3schools.com/html/html_intro.asp" },
   { imgSrc: '/skills/css.svg', label: 'CSS', desc: 'Styling Language', link:"https://www.w3schools.com/css/css_intro.asp" },
-  { imgSrc: '/skills/java.svg', label: 'Java', desc: 'Programming Language', link: "https://www.w3schools.com/js/js_intro.asp" },
+  { imgSrc: '/skills/java.svg', label: 'Java', desc: 'Programming Language', link: "https://www.w3schools.com/java/java_intro.asp" },
   { imgSrc: '/skills/django.svg', label: 'Django', desc: 'Python Framework', link: "https://www.w3schools.com/django/django_intro.php" },
   { imgSrc: '/skills/spring.svg', label: 'Spring Framework', desc: 'Java Framework', link: "https://spring.io/projects/spring-framework" },
   { imgSrc: '/skills/sql.svg', label: 'SQL', desc: 'Database', link: "https://www.w3schools.com/sql/sql_intro.asp" },
@@ -50,8 +50,15 @@ const skills = [
   { imgSrc: '/skills/github_icon.svg', label: 'GitHub', desc: 'Code Hosting & Version Control', link: "https://github.com/github" },
 ];
 
+const skillGroups = [
+  { title: 'Languages', labels: ['Python', 'JavaScript', 'Java', 'SQL', 'HTML', 'CSS'] },
+  { title: 'Frameworks', labels: ['Django', 'Spring Framework', 'React', 'TailwindCSS'] },
+  { title: 'Tools', labels: ['Figma', 'Canva', 'Visual Studio Code', 'IntelliJ', 'Postman', 'GitHub'] },
+];
+
 const Skills = () => {
   const [gridRef, inView] = useInView({ threshold: 0.2 });
+  let revealIndex = 0;
 
   return (
     <section className="skills-section" id="skills">
@@ -63,19 +70,30 @@ const Skills = () => {
         <div className="see-more-container">
           <SeeMoreButton href="/skills" />
         </div>
-        <div className="skills-grid" ref={gridRef}>
-          {skills.map((skill, index) => (
-            <div
-              key={skill.label}
-              className={`skill-reveal ${inView ? "in" : ""}`}
-              style={{ transitionDelay: `${index * 100}ms` }}
-            >
-              <SkillCard
-                imgSrc={skill.imgSrc}
-                label={skill.label}
-                desc={skill.desc}
-                link={skill.link}
-              />
+        <div className="skill-groups" ref={gridRef}>
+          {skillGroups.map((group) => (
+            <div key={group.title} className="skill-group">
+              <h3 className="skill-group-title">{group.title}</h3>
+              <div className="skills-grid">
+                {group.labels.map((label) => {
+                  const skill = skills.find((s) => s.label === label);
+                  const delay = revealIndex++ * 60;
+                  return (
+                    <div
+                      key={skill.label}
+                      className={`skill-reveal ${inView ? "in" : ""}`}
+                      style={{ transitionDelay: `${delay}ms` }}
+                    >
+                      <SkillCard
+                        imgSrc={skill.imgSrc}
+                        label={skill.label}
+                        desc={skill.desc}
+                        link={skill.link}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
             </div>
           ))}
         </div>

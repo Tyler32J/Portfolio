@@ -1,0 +1,154 @@
+/* Terminal window for running a project's real code (TerminalRunner.jsx). Always dark, like a real terminal. */
+.terminal {
+  overflow: hidden;
+  border-radius: 0.6rem;
+  border: 1px solid #3f3f46;
+  background: #0c0c0e;
+  box-shadow: 0 20px 40px -24px rgba(0, 0, 0, 0.8);
+  text-align: left;
+}
+
+.terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.55rem 0.8rem;
+  background: #1c1c20;
+  border-bottom: 1px solid #2c2c32;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 6px;
+}
+
+.terminal-dots i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3f3f46;
+}
+
+.terminal-dots i:first-child {
+  background: #14b8a6;
+}
+
+.terminal-title {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #a1a1aa;
+  font: 500 0.78rem/1 ui-monospace, Consolas, monospace;
+}
+
+.terminal-restart {
+  padding: 0.3rem 0.65rem;
+  border: 1px solid #3f3f46;
+  border-radius: 0.35rem;
+  background: transparent;
+  color: #d4d4d8;
+  font: 600 0.72rem/1 system-ui, sans-serif;
+  cursor: pointer;
+}
+
+.terminal-restart:hover {
+  border-color: #14b8a6;
+  color: #2dd4bf;
+}
+
+.terminal-screen {
+  height: min(52vh, 26rem);
+  overflow: auto;
+  padding: 0.9rem 1rem;
+  cursor: text;
+}
+
+/* Lines never wrap, like a real terminal: menus and tables keep their shape and the screen scrolls sideways if needed */
+.terminal-output {
+  margin: 0;
+  color: #e4e4e7;
+  font: 400 0.88rem/1.55 ui-monospace, "Cascadia Mono", Consolas, monospace;
+  white-space: pre;
+}
+
+@media (max-width: 520px) {
+  .terminal-screen {
+    padding: 0.75rem;
+  }
+
+  .terminal-output {
+    font-size: 0.74rem;
+  }
+}
+
+/* The typing line sits right after the program's question, like a real prompt */
+.terminal-input {
+  display: inline;
+}
+
+.terminal-input input {
+  /* A fixed width in characters, so long table lines don't stretch it off to the right */
+  width: 16ch;
+  padding: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #2dd4bf;
+  caret-color: #2dd4bf;
+  font: inherit;
+}
+
+.terminal-ended {
+  color: #71717a;
+}
+
+.terminal-start {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  text-align: center;
+  color: #d4d4d8;
+  font-size: 0.95rem;
+}
+
+.terminal-start p {
+  margin: 0;
+  max-width: 34ch;
+}
+
+.terminal-tip {
+  color: #a1a1aa;
+  font-size: 0.82rem;
+}
+
+.terminal-run {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.6rem;
+  padding: 0.8rem 1.4rem;
+  border: none;
+  border-radius: 0.55rem;
+  background-color: #14b8a6;
+  color: #fff;
+  font: 600 0.95rem/1 system-ui, sans-serif;
+  cursor: pointer;
+  box-shadow: 0 6px 18px -8px rgba(20, 184, 166, 0.8);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.terminal-run svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.terminal-run:focus-visible,
+.terminal-restart:focus-visible {
+  outline: 2px solid #5eead4;
+  outline-offset: 3px;
+}

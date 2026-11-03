@@ -1,8 +1,11 @@
 import { useState } from 'react';
+import ContactForm from './ContactForm';
 import './Contact.css';
 
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
+  // "idle" | "sending" | "error": shown on the form's button and under it (ContactForm.jsx)
+  const [status, setStatus] = useState("idle");
   const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "http://localhost:8080";
 
   const handleBack = () => {
@@ -11,13 +14,15 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (status === "sending") return;
+    setStatus("sending");
 
     const formData = new FormData(e.target);
 
     const payload = {
       name: formData.get("name"),
       email: formData.get("email"),
-      message: formData.get("message"),
+      message: `[${formData.get("topic")}] ${formData.get("message")}`,
     };
 
     try {
@@ -28,13 +33,14 @@ const Contact = () => {
       });
 
       if (res.ok) {
-        setSubmitted(true);
         e.target.reset();
+        setStatus("idle");
+        setSubmitted(true);
       } else {
-        alert("Failed to send message");
+        setStatus("error");
       }
     } catch {
-      alert("Failed to send message");
+      setStatus("error");
     }
   };
 
@@ -61,34 +67,7 @@ const Contact = () => {
           <p>Looking forward to hearing from you!</p>
         </div>
 
-        <div className="contact-form-box">
-          <form className="contact-form" onSubmit={handleSubmit}>
-            <div className="form-row">
-              <div className="form-group">
-                <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Name" required />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Email" required />
-              </div>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="message">Message</label>
-              <textarea
-                id="message"
-                name="message"
-                placeholder="Write a message!"
-                rows="6"
-                required
-              ></textarea>
-            </div>
-
-            <button type="submit" className="submit-button">Submit</button>
-          </form>
-        </div>
+        <ContactForm onSubmit={handleSubmit} status={status} />
       </div>
     </section>
   );

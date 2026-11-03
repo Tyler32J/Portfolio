@@ -1,7 +1,30 @@
+/* Same circuit pattern and glowing teal edges as the navbar and footer */
 .stats-section {
-  background: var(--color-card-bg);
+  position: relative;
+  background-color: var(--color-card-bg);
+  background-image: var(--circuit-pattern);
+  background-size: 160px 160px;
   padding: 18px 0;
   transition: background-color 0.25s ease;
+}
+
+.stats-section::before,
+.stats-section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-bright), transparent);
+  pointer-events: none;
+}
+
+.stats-section::before {
+  top: 0;
+}
+
+.stats-section::after {
+  bottom: 0;
 }
 
 .stats-container {
@@ -15,6 +38,7 @@
 }
 
 .stat-item {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,14 +59,57 @@
   color: var(--color-text-muted);
 }
 
+/* Soft teal glow on the numbers the moment the count-up lands (is-finished is set in Stats.jsx) */
+.stats-container.is-finished .stat-value {
+  animation: stat-glow 1.4s ease-out;
+}
+
+@keyframes stat-glow {
+  0% {
+    text-shadow: 0 0 0 transparent;
+  }
+  25% {
+    text-shadow: 0 0 18px rgba(45, 212, 191, 0.95), 0 0 4px rgba(45, 212, 191, 0.9);
+  }
+  100% {
+    text-shadow: 0 0 0 transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stats-container.is-finished .stat-value {
+    animation: none;
+  }
+}
+
+/* Thin teal divider between stats, centered in the 20px gap and fading out at both ends */
+.stat-item + .stat-item::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 10%;
+  bottom: 10%;
+  width: 1px;
+  background: linear-gradient(transparent, color-mix(in srgb, var(--color-accent-bright) 55%, transparent), transparent);
+}
+
 @media (max-width: 900px) {
   .stats-container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* Two per row: the third stat starts a new row, so no divider on its left */
+  .stat-item:nth-child(3)::before {
+    display: none;
   }
 }
 
 @media (max-width: 520px) {
   .stats-container {
     grid-template-columns: 1fr;
+  }
+
+  .stat-item + .stat-item::before {
+    display: none;
   }
 }

@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Preloader.css";
 
-const BLUE = "14, 165, 233";
-const BLUE_BRIGHT = "56, 189, 248";
-const WHITE_HOT = "224, 247, 255";
+const ACCENT = "20, 184, 166";
+const ACCENT_BRIGHT = "45, 212, 191";
+const WHITE_HOT = "224, 255, 248";
 
 const CARDINALS = [
   { label: "N", deg: 0, major: true },
@@ -82,7 +82,7 @@ const Preloader = () => {
         const x = cx + Math.cos(a) * r;
         const y = cy + Math.sin(a) * r;
         const twinkle = 0.25 + 0.35 * (0.5 + 0.5 * Math.sin(t / 900 + i * 1.7));
-        ctx.fillStyle = `rgba(${BLUE_BRIGHT}, ${twinkle})`;
+        ctx.fillStyle = `rgba(${ACCENT_BRIGHT}, ${twinkle})`;
         ctx.beginPath();
         ctx.arc(x, y, 0.9, 0, Math.PI * 2);
         ctx.fill();
@@ -93,9 +93,9 @@ const Preloader = () => {
       ctx.save();
       ctx.translate(cx, cy);
       ctx.rotate(angle);
-      ctx.strokeStyle = `rgba(${BLUE}, 0.4)`;
+      ctx.strokeStyle = `rgba(${ACCENT}, 0.4)`;
       ctx.lineWidth = 1.5;
-      ctx.shadowColor = `rgba(${BLUE}, 0.5)`;
+      ctx.shadowColor = `rgba(${ACCENT}, 0.5)`;
       ctx.shadowBlur = 5;
       ctx.beginPath();
       ctx.arc(0, 0, 174, 0, Math.PI * 2);
@@ -108,9 +108,9 @@ const Preloader = () => {
       ctx.translate(cx, cy);
       ctx.rotate(angle);
       const R = 138;
-      ctx.strokeStyle = `rgba(${BLUE}, 0.55)`;
+      ctx.strokeStyle = `rgba(${ACCENT}, 0.55)`;
       ctx.lineWidth = 1.4;
-      ctx.shadowColor = `rgba(${BLUE}, 0.6)`;
+      ctx.shadowColor = `rgba(${ACCENT}, 0.6)`;
       ctx.shadowBlur = 6;
 
       const notchHalf = 0.16;
@@ -143,9 +143,9 @@ const Preloader = () => {
       ctx.save();
       ctx.translate(cx, cy);
       ctx.rotate(angle);
-      ctx.strokeStyle = `rgba(${BLUE_BRIGHT}, 0.8)`;
+      ctx.strokeStyle = `rgba(${ACCENT_BRIGHT}, 0.8)`;
       ctx.lineWidth = 2.5;
-      ctx.shadowColor = `rgba(${BLUE_BRIGHT}, 0.8)`;
+      ctx.shadowColor = `rgba(${ACCENT_BRIGHT}, 0.8)`;
       ctx.shadowBlur = 8;
       ctx.setLineDash([9, 7]);
       ctx.beginPath();
@@ -164,7 +164,7 @@ const Preloader = () => {
         const major = i % 4 === 0;
         const r1 = 124;
         const r2 = major ? 114 : 119;
-        ctx.strokeStyle = major ? `rgba(${WHITE_HOT}, 0.85)` : `rgba(${BLUE}, 0.45)`;
+        ctx.strokeStyle = major ? `rgba(${WHITE_HOT}, 0.85)` : `rgba(${ACCENT}, 0.45)`;
         ctx.lineWidth = major ? 1.6 : 1;
         ctx.shadowBlur = major ? 5 : 0;
         ctx.shadowColor = `rgba(${WHITE_HOT}, 0.7)`;
@@ -180,8 +180,8 @@ const Preloader = () => {
       ctx.save();
       ctx.translate(cx, cy);
       ctx.rotate(angle);
-      ctx.fillStyle = `rgba(${BLUE_BRIGHT}, 0.9)`;
-      ctx.shadowColor = `rgba(${BLUE_BRIGHT}, 0.8)`;
+      ctx.fillStyle = `rgba(${ACCENT_BRIGHT}, 0.9)`;
+      ctx.shadowColor = `rgba(${ACCENT_BRIGHT}, 0.8)`;
       ctx.shadowBlur = 6;
       [0.9, 2.8, 4.7].forEach((a) => {
         const r = 122;
@@ -210,7 +210,7 @@ const Preloader = () => {
         const wobble = 0.5 + 0.5 * Math.sin(t / 260 + SPIKE_SEEDS[i] * 12);
         const len = 8 + SPIKE_SEEDS[i] * 22 * (reduceMotion ? 1 : 0.6 + 0.4 * wobble);
         const r1 = 139;
-        ctx.strokeStyle = `rgba(${BLUE_BRIGHT}, ${0.3 + 0.35 * wobble})`;
+        ctx.strokeStyle = `rgba(${ACCENT_BRIGHT}, ${0.3 + 0.35 * wobble})`;
         ctx.lineWidth = 1.3;
         ctx.beginPath();
         ctx.moveTo(Math.cos(a) * r1, Math.sin(a) * r1);
@@ -224,7 +224,7 @@ const Preloader = () => {
       ctx.save();
       ctx.translate(cx, cy);
       const glow = locked ? 12 : 6;
-      ctx.fillStyle = locked ? `rgba(${WHITE_HOT}, 1)` : `rgba(${BLUE_BRIGHT}, 0.9)`;
+      ctx.fillStyle = locked ? `rgba(${WHITE_HOT}, 1)` : `rgba(${ACCENT_BRIGHT}, 0.9)`;
       ctx.shadowColor = `rgba(${WHITE_HOT}, 0.9)`;
       ctx.shadowBlur = glow;
       ctx.beginPath();
@@ -233,7 +233,7 @@ const Preloader = () => {
       ctx.lineTo(6, -122);
       ctx.closePath();
       ctx.fill();
-      ctx.strokeStyle = `rgba(${BLUE}, 0.5)`;
+      ctx.strokeStyle = `rgba(${ACCENT}, 0.5)`;
       ctx.lineWidth = 1;
       ctx.beginPath();
       ctx.moveTo(0, -118);
@@ -252,7 +252,7 @@ const Preloader = () => {
         const isMajor = d % 30 === 0;
         const r1 = 112;
         const r2 = isMajor ? 100 : 106;
-        ctx.strokeStyle = isMajor ? `rgba(${WHITE_HOT}, 0.85)` : `rgba(${BLUE}, 0.45)`;
+        ctx.strokeStyle = isMajor ? `rgba(${WHITE_HOT}, 0.85)` : `rgba(${ACCENT}, 0.45)`;
         ctx.lineWidth = isMajor ? 1.6 : 1;
         ctx.beginPath();
         ctx.moveTo(Math.cos(a) * r1, Math.sin(a) * r1);
@@ -263,7 +263,7 @@ const Preloader = () => {
       CARDINALS.forEach((c) => {
         const a = (c.deg * Math.PI) / 180 - Math.PI / 2;
         const len = c.major ? 82 : 58;
-        ctx.strokeStyle = c.major ? `rgba(${BLUE_BRIGHT}, 0.55)` : `rgba(${BLUE}, 0.3)`;
+        ctx.strokeStyle = c.major ? `rgba(${ACCENT_BRIGHT}, 0.55)` : `rgba(${ACCENT}, 0.3)`;
         ctx.lineWidth = c.major ? 1.4 : 1;
         ctx.beginPath();
         ctx.moveTo(0, 0);
@@ -281,8 +281,8 @@ const Preloader = () => {
         ctx.rotate(-angle);
         ctx.font = c.major ? "700 12px system-ui, sans-serif" : "600 8px system-ui, sans-serif";
         ctx.fillStyle =
-          c.label === "N" ? `rgba(${WHITE_HOT}, 1)` : c.major ? `rgba(${BLUE_BRIGHT}, 0.9)` : `rgba(${BLUE}, 0.6)`;
-        ctx.shadowColor = `rgba(${BLUE_BRIGHT}, 0.7)`;
+          c.label === "N" ? `rgba(${WHITE_HOT}, 1)` : c.major ? `rgba(${ACCENT_BRIGHT}, 0.9)` : `rgba(${ACCENT}, 0.6)`;
+        ctx.shadowColor = `rgba(${ACCENT_BRIGHT}, 0.7)`;
         ctx.shadowBlur = c.label === "N" ? 8 : 3;
         ctx.fillText(c.label, 0, 0);
         ctx.restore();
@@ -300,7 +300,7 @@ const Preloader = () => {
       ctx.lineTo(-4.5, 0);
       ctx.lineTo(4.5, 0);
       ctx.closePath();
-      ctx.fillStyle = locked ? `rgba(${WHITE_HOT}, 1)` : `rgba(${BLUE_BRIGHT}, 0.95)`;
+      ctx.fillStyle = locked ? `rgba(${WHITE_HOT}, 1)` : `rgba(${ACCENT_BRIGHT}, 0.95)`;
       ctx.shadowColor = `rgba(${WHITE_HOT}, 0.9)`;
       ctx.shadowBlur = locked ? 10 : 6;
       ctx.fill();
@@ -309,7 +309,7 @@ const Preloader = () => {
       ctx.lineTo(-3.5, 0);
       ctx.lineTo(3.5, 0);
       ctx.closePath();
-      ctx.fillStyle = `rgba(${BLUE}, 0.55)`;
+      ctx.fillStyle = `rgba(${ACCENT}, 0.55)`;
       ctx.shadowBlur = 0;
       ctx.fill();
       ctx.restore();
@@ -320,7 +320,7 @@ const Preloader = () => {
       ctx.save();
       ctx.translate(cx, cy);
       ctx.fillStyle = `rgba(${WHITE_HOT}, 1)`;
-      ctx.shadowColor = `rgba(${BLUE_BRIGHT}, 0.9)`;
+      ctx.shadowColor = `rgba(${ACCENT_BRIGHT}, 0.9)`;
       ctx.shadowBlur = 8 + pulse * 6;
       ctx.beginPath();
       ctx.arc(0, 0, 3 + pulse * 1, 0, Math.PI * 2);

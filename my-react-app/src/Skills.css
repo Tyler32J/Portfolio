@@ -27,7 +27,7 @@
 
 .skills-section {
   padding: 4rem 1.5rem;
-  background-color: var(--color-bg);
+  background-color: transparent;
   transition: background-color 0.25s ease;
 }
 
@@ -51,6 +51,31 @@
   text-align: center;
   margin-left: auto;
   margin-right: auto;
+}
+
+.skill-groups {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.skill-group-title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+}
+
+.skill-group-title::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--color-border);
 }
 
 .skills-grid {

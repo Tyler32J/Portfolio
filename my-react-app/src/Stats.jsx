@@ -4,22 +4,25 @@ import './Stats.css';
 
 const statsData = [
   { target: 1, suffix: '+', label: 'Years Experience' },
-  { target: 7, suffix: '+', label: 'Completed Projects' },
+  { target: 9, suffix: '+', label: 'Completed Projects' },
   { target: 2000, suffix: '+', label: 'Coding Hours' },
-  { target: 30, suffix: '+', label: 'Tech Stack' },
+  { target: 16, suffix: '+', label: 'Tech Stack' },
 ];
 
 const Stats = () => {
   const [ref, inView] = useInView({ threshold: 0.3 });
-  const [counts, setCounts] = useState(statsData.map(() => 0));
+  const [reduceMotion] = useState(
+    () => window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  );
+  // With reduced motion the numbers start at their final values, so there's nothing to count up
+  const [counts, setCounts] = useState(() =>
+    statsData.map((s) => (reduceMotion ? s.target : 0))
+  );
+  // Set once the count-up lands, which plays a short teal glow on the numbers (Stats.css)
+  const [finished, setFinished] = useState(false);
 
   useEffect(() => {
-    if (!inView) return;
-
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setCounts(statsData.map((s) => s.target));
-      return;
-    }
+    if (!inView || reduceMotion) return;
 
     const duration = 1100;
     const startTime = performance.now();
@@ -30,15 +33,16 @@ const Stats = () => {
       const eased = 1 - Math.pow(1 - progress, 3);
       setCounts(statsData.map((s) => Math.floor(s.target * eased)));
       if (progress < 1) frame = requestAnimationFrame(animate);
+      else setFinished(true);
     };
 
     frame = requestAnimationFrame(animate);
     return () => cancelAnimationFrame(frame);
-  }, [inView]);
+  }, [inView, reduceMotion]);
 
   return (
     <section className="stats-section" ref={ref}>
-      <div className="stats-container">
+      <div className={`stats-container ${finished ? "is-finished" : ""}`}>
         {statsData.map((stat, index) => (
           <div key={stat.label} className="stat-item">
             <span className="stat-value">

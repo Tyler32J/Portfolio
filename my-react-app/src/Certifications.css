@@ -4,7 +4,7 @@
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   padding: 4rem 1.5rem;
-  background-color: var(--color-bg) !important;
+  background-color: transparent !important;
   color: var(--color-text);
   transition: background-color 0.25s ease, color 0.25s ease;
 }
@@ -72,7 +72,7 @@
 
 .cert-card:hover {
   border-color: var(--color-accent);
-  box-shadow: 0 4px 24px rgba(14, 165, 233, 0.08);
+  box-shadow: 0 4px 24px rgba(20, 184, 166, 0.08);
 }
 
 /* Vertical timeline rail */
@@ -86,15 +86,15 @@
   justify-content: space-between;
   padding: 1.25rem 0;
   background: var(--color-rail-bg);
-  border-right: 1px solid rgba(14, 165, 233, 0.18);
+  border-right: 1px solid rgba(20, 184, 166, 0.18);
 }
 
 .timeline-dot {
   width: 0.5rem;
   height: 0.5rem;
   border-radius: 50%;
-  background: rgb(14, 165, 233);
-  box-shadow: 0 0 6px 2px rgba(14, 165, 233, 0.8);
+  background: rgb(20, 184, 166);
+  box-shadow: 0 0 6px 2px rgba(20, 184, 166, 0.8);
   position: relative;
   z-index: 1;
   flex-shrink: 0;
@@ -108,12 +108,12 @@
   width: 1px;
   transform: translateX(-50%);
   background: linear-gradient(
-    rgba(14, 165, 233, 0) 0%,
-    rgba(14, 165, 233, 0.7) 25%,
-    rgba(14, 165, 233, 0.7) 75%,
-    rgba(14, 165, 233, 0) 100%
+    rgba(20, 184, 166, 0) 0%,
+    rgba(20, 184, 166, 0.7) 25%,
+    rgba(20, 184, 166, 0.7) 75%,
+    rgba(20, 184, 166, 0) 100%
   );
-  box-shadow: 0 0 8px 1px rgba(14, 165, 233, 0.4);
+  box-shadow: 0 0 8px 1px rgba(20, 184, 166, 0.4);
 }
 
 .timeline-year {
@@ -121,8 +121,8 @@
   font-weight: 700;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
-  color: rgb(14, 165, 233);
-  text-shadow: 0 0 8px rgba(14, 165, 233, 0.9);
+  color: rgb(20, 184, 166);
+  text-shadow: 0 0 8px rgba(20, 184, 166, 0.9);
   letter-spacing: 0.2em;
   user-select: none;
   position: relative;
