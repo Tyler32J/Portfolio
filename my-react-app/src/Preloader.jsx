@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import "./Preloader.css";
 
 const ACCENT = "20, 184, 166";
@@ -52,18 +51,14 @@ const Preloader = () => {
   const percentRef = useRef(null);
   const [dismissed, setDismissed] = useState(false);
   const [removed, setRemoved] = useState(false);
-  const navigate = useNavigate();
-  const hasCheckedInitialRoute = useRef(false);
+  // The compass boot animation is a "welcome to the site" moment for the home page only.
+  // A direct hit to another route (a shared link, a refresh, a search engine crawling it)
+  // should show that page immediately -- never bounce the visitor back to "/".
+  const [isHome] = useState(() => window.location.pathname === "/");
 
   useEffect(() => {
-    if (hasCheckedInitialRoute.current) return;
-    hasCheckedInitialRoute.current = true;
-    if (window.location.pathname !== "/") {
-      navigate("/", { replace: true });
-    }
-  }, [navigate]);
+    if (!isHome) return;
 
-  useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -390,9 +385,9 @@ const Preloader = () => {
       clearTimeout(dismissTimer);
       clearTimeout(removeTimer);
     };
-  }, []);
+  }, [isHome]);
 
-  if (removed) return null;
+  if (!isHome || removed) return null;
 
   return (
     <div className={`preloader-overlay${dismissed ? " dismissed" : ""}`}>

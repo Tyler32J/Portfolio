@@ -3,11 +3,29 @@ import CircuitSignals from "./CircuitSignals";
 import { RESUME_URL } from "./resume";
 import { modalHeaderSignals as headerSignals, modalFooterSignals as footerSignals } from "./modalSignals";
 
+// pdf.js is ~600KB; only visitors who actually open the résumé should pay for it, so it's
+// loaded on demand (below) instead of imported up top with everything else.
+let pdfjsLibPromise = null;
+function loadPdfjs() {
+  if (!pdfjsLibPromise) {
+    pdfjsLibPromise = Promise.all([
+      import("pdfjs-dist"),
+      import("pdfjs-dist/build/pdf.worker.min.mjs?url"),
+    ]).then(([pdfjsLib, worker]) => {
+      pdfjsLib.GlobalWorkerOptions.workerSrc = worker.default;
+      return pdfjsLib;
+    });
+  }
+  return pdfjsLibPromise;
+}
+
 // Résumé popup, opened by openResume() in resume.js. Reuses the certificate popup's look
 // (cert-modal / modal-* classes) so both popups match.
 const ResumePreview = () => {
   const [open, setOpen] = useState(false);
+  const [status, setStatus] = useState("loading"); // loading | ready | error
   const closeRef = useRef(null);
+  const canvasHostRef = useRef(null);
 
   useEffect(() => {
     const show = () => setOpen(true);
@@ -29,6 +47,56 @@ const ResumePreview = () => {
     return () => {
       document.body.style.overflow = previousOverflow;
       document.removeEventListener("keydown", onKey);
+    };
+  }, [open]);
+
+  // Render the PDF onto <canvas> elements ourselves instead of leaving it to an <iframe>:
+  // a browser's built-in PDF viewer is unreliable embedded in a page (some browser
+  // settings or extensions just silently download the file and leave the frame blank),
+  // so pdf.js gives the same result for every visitor.
+  useEffect(() => {
+    if (!open) return;
+
+    let cancelled = false;
+    setStatus("loading");
+    const host = canvasHostRef.current;
+    if (host) host.innerHTML = "";
+
+    loadPdfjs()
+      .then((pdfjsLib) => pdfjsLib.getDocument(RESUME_URL).promise)
+      .then(async (pdf) => {
+        if (cancelled || !host) return;
+        const containerWidth = host.clientWidth || 760;
+        const pixelRatio = window.devicePixelRatio || 1;
+
+        for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+          if (cancelled) return;
+          const page = await pdf.getPage(pageNum);
+          const unscaledViewport = page.getViewport({ scale: 1 });
+          const scale = (containerWidth / unscaledViewport.width) * pixelRatio;
+          const viewport = page.getViewport({ scale });
+
+          const canvas = document.createElement("canvas");
+          canvas.className = "resume-page";
+          canvas.width = viewport.width;
+          canvas.height = viewport.height;
+          canvas.style.aspectRatio = `${unscaledViewport.width} / ${unscaledViewport.height}`;
+          if (cancelled || !host) return;
+          host.appendChild(canvas);
+
+          const ctx = canvas.getContext("2d");
+          await page.render({ canvasContext: ctx, viewport }).promise;
+        }
+
+        if (!cancelled) setStatus("ready");
+      })
+      .catch((err) => {
+        console.error("Résumé preview failed to render", err);
+        if (!cancelled) setStatus("error");
+      });
+
+    return () => {
+      cancelled = true;
     };
   }, [open]);
 
@@ -62,14 +130,25 @@ const ResumePreview = () => {
         </div>
 
         <div className="modal-body">
-          <iframe className="resume-frame" src={`${RESUME_URL}#view=FitH`} title="Tyler Farrell's résumé" />
+          <div className="resume-frame">
+            {/* pdf.js owns every child of this div directly (see the effect above); React
+                never renders anything into it, so the two never fight over its contents */}
+            <div className="resume-canvases" ref={canvasHostRef} />
+            {status === "loading" && <p className="resume-status">Loading résumé…</p>}
+            {status === "error" && (
+              <p className="resume-status">
+                Couldn't load the preview.{" "}
+                <a href={RESUME_URL} target="_blank" rel="noreferrer">
+                  Open the PDF directly
+                </a>{" "}
+                instead.
+              </p>
+            )}
+          </div>
         </div>
 
         <div className="modal-footer">
           <CircuitSignals signals={footerSignals} />
-          <a href={RESUME_URL} target="_blank" rel="noreferrer" className="resume-open-link">
-            Open in new tab
-          </a>
           <a href={RESUME_URL} download="Tyler-Farrell-Resume.pdf" className="resume-download btn-shine">
             Download PDF
           </a>

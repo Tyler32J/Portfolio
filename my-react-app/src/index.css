@@ -246,13 +246,42 @@ html {
   max-width: 860px;
 }
 
+/* Scroll container for the résumé preview; .resume-canvases inside is pdf.js's own div
+   (ResumePreview.jsx) -- React never renders children into it directly */
 .resume-frame {
   display: block;
   width: 100%;
   height: min(72vh, 900px);
+  overflow-y: auto;
   border: 0;
   border-radius: 0.5rem;
   background: #fff;
+}
+
+.resume-canvases {
+  display: block;
+  width: 100%;
+}
+
+.resume-page {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.resume-page + .resume-page {
+  margin-top: 0.75rem;
+}
+
+.resume-status {
+  margin: 0;
+  padding: 2.5rem 1.5rem;
+  text-align: center;
+  color: #52525b;
+}
+
+.resume-status a {
+  color: var(--color-accent-bright);
 }
 
 .resume-modal .modal-footer {
@@ -294,7 +323,6 @@ html {
   gap: 1rem;
 }
 
-.resume-open-link,
 .resume-download,
 .modal-action {
   padding: 0.75rem 1.3rem;
@@ -302,17 +330,6 @@ html {
   font-weight: 600;
   text-decoration: none;
   transition: background-color 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-
-.resume-open-link {
-  border: 1px solid var(--color-accent);
-  color: var(--color-accent-bright);
-}
-
-.resume-open-link:hover {
-  background-color: var(--color-accent);
-  color: #fff;
-  transform: translateY(-2px);
 }
 
 .modal-action {
@@ -338,17 +355,10 @@ html {
   box-shadow: 0 6px 18px -8px rgba(20, 184, 166, 0.8);
 }
 
-.resume-open-link:focus-visible,
 .resume-download:focus-visible,
 .modal-action:focus-visible {
   outline: 2px solid var(--color-accent-glow);
   outline-offset: 3px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .resume-open-link:hover {
-    transform: none;
-  }
 }
 
 /* Main buttons: teal gradient, lift on hover, and a streak of light that sweeps across */
