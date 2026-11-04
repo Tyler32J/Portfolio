@@ -13,7 +13,8 @@ const projects = [
     id: 1,
     title: "Sportsman's Journal",
     description: "Sportsman's Journal is a personal field log designed for hunters and anglers who value accurate records and lasting memories. Log your hunts, record your catches, and build a personal outdoor journal.",
-    image: "/projects/sportsman_journal.webp",
+    image: "/projects/sportsman_journal.png",
+    imagePosition: "top",
     link: "https://web-production-e5e3.up.railway.app/",
     tech: "Django, Html, CSS",
     category: "website"
@@ -49,7 +50,8 @@ const projects = [
     id: 5,
     title: "Game Collection Manager",
     description: "Game Collection Manager is a full-stack web app designed to help users manage their personal video game library. Users can add new games, view their collection, update information, and remove games they no longer own.",
-    image: "/projects/game_collection_manager.webp",
+    image: "/projects/game_collection_manager.png",
+    imagePosition: "top",
     link: "https://game-collection-manager-production.up.railway.app",
     tech: "React, Html, CSS",
     category: "website"
@@ -160,7 +162,12 @@ const ProjectsPage = () => {
               onPointerLeave={handleSpotlightLeave}
             >
               <div className="project-img-wrapper">
-                <img src={project.image} alt={project.title} className="project-img" />
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="project-img"
+                  style={project.imagePosition ? { objectPosition: project.imagePosition } : undefined}
+                />
               </div>
               <div className="project-content">
                 <h3 className="project-name">{project.title}</h3>
