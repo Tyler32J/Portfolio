@@ -5,7 +5,8 @@ export default defineConfig({
 plugins: [react()],
 preview: {
 host: "0.0.0.0",
-allowedHosts: [".up.railway.app"]
+// A leading dot allows the domain itself and every subdomain (www.tylerfarrellsportfolio.com too)
+allowedHosts: [".up.railway.app", ".tylerfarrellsportfolio.com"]
 }
 });
 
